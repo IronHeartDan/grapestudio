@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [scrollTopState, setScrollTop] = useState(false);
+  const [offersState, setOffer] = useState(0);
 
   window.onscroll = () => {
     if (
@@ -95,6 +96,8 @@ function App() {
 
   return (
     <div className="app">
+      {/* scrollToTop */}
+
       <div
         className="scrollToTop"
         style={{
@@ -106,6 +109,8 @@ function App() {
           <ArrowUpwardIcon />
         </Button>
       </div>
+
+      {/* scrollToTop */}
 
       {/* main */}
 
@@ -130,34 +135,184 @@ function App() {
       </section>
 
       {/* main */}
+
+      {/* s_offer */}
+
       <section className="s_offer">
         <div>
           <h1>What We Offer ?</h1>
           <div className="anim_offer">
-            <div className="offer_anim_card">
-              <img src={asset_one} alt="" />
+            <div className="offer_anim_card" onMouseOver={() => setOffer(1)}>
               <h6>Mobile App development</h6>
             </div>
-            <div className="offer_anim_card">
+            <div className="offer_anim_card" onMouseOver={() => setOffer(2)}>
               <h6>Website development</h6>
             </div>
-            <div className="offer_anim_card">
+            <div className="offer_anim_card" onMouseOver={() => setOffer(3)}>
               <h6>Web/ Mobile App design</h6>
             </div>
-            <div className="offer_anim_card">
+            <div className="offer_anim_card" onMouseOver={() => setOffer(4)}>
               <h6>Graphic designing</h6>
             </div>
-            <div className="offer_anim_card">
+            <div className="offer_anim_card" onMouseOver={() => setOffer(5)}>
               <h6>Five</h6>
             </div>
-            <div className="offer_anim_card">
+            <div className="offer_anim_card" onMouseOver={() => setOffer(6)}>
               <h6>Six</h6>
             </div>
           </div>
         </div>
-        <div></div>
+        <div>
+          <div>
+            {(() => {
+              console.log(offersState);
+              switch (offersState) {
+                case 1:
+                  return (
+                    <>
+                      <h1>Mobile App development</h1>
+                      <ul>
+                        <li> Highly proficient in Android app development.</li>
+                        <li>
+                          Hiring passionate and dedicated developers to produce
+                          the best results.
+                        </li>
+                        <li>
+                          Showcasing innovative and enthusiastic approach while
+                          building android apps
+                        </li>
+                        <li>
+                          Working with existing and updated technologies for
+                          secure and sturdy app development.
+                        </li>
+                        <li>
+                          Providing steady and satisfactory result to our
+                          clients.
+                        </li>
+                        <li>Delivering with exceptional punctuality.</li>
+                      </ul>
+                    </>
+                  );
+                  break;
+                case 2:
+                  return (
+                    <>
+                      <h1>Website development</h1>
+                      <ul>
+                        <li> Highly proficient in website development.</li>
+                        <li>
+                          Conducting innovative tactic while building
+                          static/dynamic websites.
+                        </li>
+                        <li>
+                          Hiring passionate and dedicated individuals to ensure
+                          smooth development.
+                        </li>
+                        <li>
+                          Developing dynamic/static websites from scratch.
+                        </li>
+                        <li>Providing better user interactive interface.</li>
+                        <li>
+                          Constructing wide sets of websites ranging from
+                          (Personal, Photo sharing, writer/author, informative,
+                          ecommerce).
+                        </li>
+                      </ul>
+                    </>
+                  );
+                  break;
+                case 3:
+                  return (
+                    <>
+                      <h1>Web/ Mobile App design</h1>
+                      <ul>
+                        <li>Highly proficient in web/mobile app designing.</li>
+                        <li>
+                          Offering interactive UI & UX designs for your Mobile
+                          applications/Websites.
+                        </li>
+                        <li>
+                          Following professional procedures while designing your
+                          respective web/Mobile app.
+                        </li>
+                        <li>Ensuring timely delivery of orders.</li>
+                        <li>
+                          Using creative tools to maximize user interactions.
+                        </li>
+                        <li> Hiring professional UI/UX designers.</li>
+                      </ul>
+                    </>
+                  );
+                  break;
+                case 4:
+                  return (
+                    <>
+                      <h1>Graphic designing</h1>
+                      <ul>
+                        <li>Highly proficient in Graphic designing.</li>
+                        <li>
+                          <strong>Logo designing:-</strong> ➔ A team of
+                          experienced logo designers providing services from
+                          basic and complex logo designs for small scale
+                          businesses to big enterprising corporations.
+                        </li>
+                        <li>
+                          <strong>Business cards designing:-</strong> ➔ Adding
+                          life to your business cards by using creative and
+                          professional designing methods while developing them.
+                        </li>
+                        <li>
+                          <strong>Social media posts designing:- </strong>{" "}
+                          ➔Providing interactive post designs for engaging more
+                          audiences.
+                        </li>
+                        <li>
+                          <strong>Business Flyer designing:-</strong> ➔ Creating
+                          your own professional business flyer designs allowing
+                          you to express the story of your case. Whether it’s
+                          for business, promoting, fundraisers etc
+                        </li>
+                        <li>
+                          Ensuring timely delivery of each and every design.
+                        </li>
+                      </ul>
+                    </>
+                  );
+                  break;
+                case 5:
+                  return (
+                    <>
+                      <h1>Five</h1>
+                      <ul>
+                        <li>Five</li>
+                      </ul>
+                    </>
+                  );
+                  break;
+                case 6:
+                  return (
+                    <>
+                      <h1>Six</h1>
+                      <ul>
+                        <li> Six</li>
+                      </ul>
+                    </>
+                  );
+                  break;
+
+                default:
+                  break;
+              }
+            })()}
+          </div>
+        </div>
       </section>
-      <section className="s_scouting"></section>
+
+      {/* s_offer */}
+
+      <section className="s_scouting">
+        <h1>What We Are Scouting For?</h1>
+      </section>
     </div>
   );
 }

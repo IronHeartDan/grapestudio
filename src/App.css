@@ -279,10 +279,10 @@ section {
   position: relative;
   flex: 1;
   display: flex;
-  overflow: hidden;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
   padding: 10px;
 }
 
@@ -308,9 +308,8 @@ section {
 
 .s_offer > div:first-of-type > div > div > h6 {
   position: absolute;
-  text-shadow: 0 0 5px black;
-  color: white;
   transition: all ease-in 0.2s;
+  text-align: center;
 }
 
 .s_offer > div:first-of-type > div > div:hover > h6 {
@@ -347,9 +346,10 @@ section {
 @keyframes card {
   to {
     position: relative;
-    margin: 2px 10px;
+    margin: 10px;
     width: calc(50% - 20px);
-    height: calc(32.333% - 10px);
+    height: calc(33.333% - 20px);
+    border-radius: 20px;
     flex-shrink: 0;
   }
 }
@@ -431,6 +431,31 @@ section {
 }
 
 /* Offer Anim */
+
+.s_offer > div:last-of-type {
+  display: flex;
+  justify-content: baseeline;
+  align-items: center;
+  color: black;
+  padding: 50px;
+}
+
+.s_offer > div:last-of-type > div > ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.s_offer > div:last-of-type > div > ul > li {
+  font-size: larger;
+  width: calc(50% - 60px);
+  margin: 20px;
+  padding: 10px;
+  border-top: 5px solid #161f6d;
+}
+
+/* .s_offer */
 
 .s_scouting {
   background: linear-gradient(120deg, #161f6d, #565ea5);
