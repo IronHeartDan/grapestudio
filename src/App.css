@@ -84,7 +84,7 @@
   margin: 10px;
   border-radius: 50%;
   box-shadow: 0 0 10px black;
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,6 +102,7 @@ section {
   scroll-snap-align: center;
   scroll-snap-stop: always;
   min-height: 100vh;
+  height: auto;
   position: relative;
   color: white;
 }
@@ -113,9 +114,7 @@ section {
 .s_main .logo {
   width: 200px;
   height: 200px;
-  position: absolute;
-  left: 5rem;
-  top: 10rem;
+  margin: 20px;
   object-fit: contain;
   cursor: pointer;
 }
@@ -160,9 +159,9 @@ section {
 .s_main .slogan_con {
   position: absolute;
   top: 50%;
-  left: 5rem;
+  transform: translateY(-50%);
+  margin-left: 2%;
   user-select: none;
-  font-size: large;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -170,7 +169,8 @@ section {
   justify-content: center;
 }
 .s_main .slogan_con > h1 {
-  font-size: 2.5em;
+  /* font-size: 55.5px; */
+  font-size: 4rem;
 }
 
 .s_main .slogan_con > h1:first-of-type {
@@ -193,8 +193,8 @@ section {
 .s_main > button {
   z-index: 1000;
   position: absolute;
-  bottom: 20%;
-  left: 5rem;
+  top: 65%;
+  left: 2%;
   padding: 15px 25px;
   background-color: white;
   font-weight: 900;
@@ -205,16 +205,15 @@ section {
 }
 
 .s_main > button:hover {
-  background: rgba(22, 31, 109, 0.2);
-  color: white;
+  background: white;
 }
 
 .s_main .asset_one {
   animation: asset ease-in-out infinite 1s alternate-reverse;
   position: absolute;
   bottom: 20%;
-  right: 10rem;
-  width: 25%;
+  right: 10%;
+  width: 30%;
   object-fit: contain;
 }
 
@@ -256,6 +255,7 @@ section {
 
 .s_offer {
   display: flex;
+  height: max-content;
 }
 
 .s_offer > div {
@@ -263,47 +263,39 @@ section {
 }
 
 .s_offer > div:first-of-type {
-  background: linear-gradient(120deg, #161f6d, #565ea5);
-
   font-size: xx-large;
   display: flex;
-  border-radius: 0 100px 0 0;
   flex-direction: column;
 }
 
 .s_offer > div:first-of-type > h1 {
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 40px;
+  margin-top: 40px;
 }
 .s_offer > div:first-of-type .anim_offer {
   position: relative;
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   overflow: hidden;
   padding: 10px;
 }
-
 .s_offer > div:first-of-type > div > div {
   position: absolute;
   width: 33.333%;
   height: 33.333%;
-  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
   color: black;
+  border-radius: 20px;
   background-color: white;
   overflow: hidden;
   cursor: pointer;
-}
-
-.s_offer > div:first-of-type > div > div > img {
-  width: 100%;
-  object-fit: cover;
+  box-shadow: 0 0 10px 2px black;
 }
 
 .s_offer > div:first-of-type > div > div > h6 {
@@ -313,35 +305,9 @@ section {
 }
 
 .s_offer > div:first-of-type > div > div:hover > h6 {
+  font-size: small;
   transform: translateY(100px) scale(1.2);
 }
-
-/* .s_offer > div:first-of-type > div > div:nth-of-type(1) {
-  animation: magix 3s 0s forwards ease, one 1s 18s forwards ease,
-    card 0s 18s forwards ease;
-}
-.s_offer > div:first-of-type > div > div:nth-of-type(2) {
-  animation: magix 5s 2s forwards ease, two 1s 18.5s forwards ease,
-    card 0s 18s forwards ease;
-}
-.s_offer > div:first-of-type > div > div:nth-of-type(3) {
-  animation: magix 5s 5s forwards ease, three 1s 19s forwards ease,
-    card 0s 18s forwards ease;
-}
-.s_offer > div:first-of-type > div > div:nth-of-type(4) {
-  animation: magix 5s 8s forwards ease, four 1s 19.5s forwards ease,
-    card 0s 18s forwards ease;
-}
-.s_offer > div:first-of-type > div > div:nth-of-type(5) {
-  animation: magix 5s 11s forwards ease, five 1s 20s forwards ease,
-    card 0s 18s forwards ease;
-}
-.s_offer > div:first-of-type > div > div:nth-of-type(6) {
-  animation: magix 5s 14s forwards ease, six 0.5s 20.5s forwards ease,
-    card 0s 18s forwards ease;
-} */
-
-/* Offer Anim */
 
 @keyframes card {
   to {
@@ -349,7 +315,6 @@ section {
     margin: 10px;
     width: calc(50% - 20px);
     height: calc(33.333% - 20px);
-    border-radius: 20px;
     flex-shrink: 0;
   }
 }
@@ -438,6 +403,11 @@ section {
   align-items: center;
   color: black;
   padding: 50px;
+  user-select: none;
+}
+
+.s_offer > div:last-of-type > div > h1 {
+  margin-left: 30px;
 }
 
 .s_offer > div:last-of-type > div > ul {
@@ -459,7 +429,96 @@ section {
 
 .s_scouting {
   background: linear-gradient(120deg, #161f6d, #565ea5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.s_scouting > h1 {
+  font-size: 3rem;
+}
+
+.s_scouting > div {
+  padding: 100px;
+  width: 60%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.s_scouting > div > div {
+  border-top: 5px solid white;
+  width: 100%;
+  height: fit-content;
+  transition: all ease 0.5s;
+}
+
+.s_scouting > div > div > p {
+  visibility: hidden;
+  transition: all ease 0.5s;
+}
+
+.s_scouting > div > div:hover {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.s_scouting > div > div:hover > p {
+  visibility: visible;
+}
+
+.s_scouting > div > div > h1 {
+  transform: translateY(-150%);
+}
+
+.s_scouting > div > div::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  content: "^";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  transform: translate(-120%, -60%) rotate(180deg);
+}
+
+/* footer */
+
+footer {
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: start;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+footer > a {
+  text-decoration: none;
+  color: white;
+  margin: 5px;
+  padding: 5px;
+}
+
+footer > a:hover {
+  color: yellow;
+}
+
+footer > span {
+  user-select: none;
+  position: absolute;
+  left: 0;
+  color: white;
+  margin: 10px;
+}
+
+/* footer end*/
 
 /* Tablet */
 

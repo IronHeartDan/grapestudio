@@ -10,20 +10,16 @@ function App() {
   const [scrollTopState, setScrollTop] = useState(false);
   const [offersState, setOffer] = useState(0);
 
-  window.onscroll = () => {
-    if (
-      document.body.scrollTop > 100 ||
-      document.documentElement.scrollTop > 100
-    ) {
+  const onScroll = (e) => {
+    if (e.target.scrollTop > 100) {
       setScrollTop(true);
-      console.log("sjdkajsbd");
     } else {
       setScrollTop(false);
     }
   };
 
   const scrollToTop = () => {
-    document.body.scrollTop = 0;
+    document.querySelector(".app").scrollTop = 0;
   };
 
   const magic = new IntersectionObserver((entries) => {
@@ -47,40 +43,63 @@ function App() {
   });
 
   const offerMagic = new IntersectionObserver((entries) => {
-    if (entries[0].intersectionRatio > 0) {
-      let offer_anim_cards = document.querySelectorAll(".offer_anim_card");
-      offer_anim_cards.forEach((card, index) => {
-        switch (index) {
-          case 0:
-            card.style.animation =
-              " magix 3s 0s forwards ease, one 1s 18s forwards ease,card 0s 18s forwards ease";
-            break;
-          case 1:
-            card.style.animation =
-              "magix 5s 2s forwards ease, two 1s 18.5s forwards ease,card 0s 18s forwards ease";
-            break;
-          case 2:
-            card.style.animation =
-              "magix 5s 5s forwards ease, three 1s 19s forwards ease,card 0s 18s forwards ease";
-            break;
-          case 3:
-            card.style.animation =
-              " magix 5s 8s forwards ease, four 1s 19.5s forwards ease,card 0s 18s forwards ease";
-            break;
-          case 4:
-            card.style.animation =
-              " magix 5s 11s forwards ease, five 1s 20s forwards ease,card 0s 18s forwards ease";
-            break;
-          case 5:
-            card.style.animation =
-              "magix 5s 14s forwards ease, six 0.5s 20.5s forwards ease,card 0s 18s forwards ease";
-            break;
+    entries.forEach((entry, index) => {
+      console.log(index);
+      switch (index) {
+        case 0:
+          if (entry.intersectionRatio > 0) {
+            let offer_anim_cards =
+              document.querySelectorAll(".offer_anim_card");
+            offer_anim_cards.forEach((card, ci) => {
+              switch (ci) {
+                case 0:
+                  card.style.animation =
+                    " magix 3s 0s forwards ease, one 1s 18s forwards ease,card 0s 18s forwards ease";
+                  break;
+                case 1:
+                  card.style.animation =
+                    "magix 5s 2s forwards ease, two 1s 18.5s forwards ease,card 0s 18s forwards ease";
+                  break;
+                case 2:
+                  card.style.animation =
+                    "magix 5s 5s forwards ease, three 1s 19s forwards ease,card 0s 18s forwards ease";
+                  break;
+                case 3:
+                  card.style.animation =
+                    " magix 5s 8s forwards ease, four 1s 19.5s forwards ease,card 0s 18s forwards ease";
+                  break;
+                case 4:
+                  card.style.animation =
+                    " magix 5s 11s forwards ease, five 1s 20s forwards ease,card 0s 18s forwards ease";
+                  break;
+                case 5:
+                  card.style.animation =
+                    "magix 5s 14s forwards ease, six 0.5s 20.5s forwards ease,card 0s 18s forwards ease";
+                  break;
 
-          default:
-            break;
-        }
-      });
-    }
+                default:
+                  break;
+              }
+            });
+          }
+          break;
+
+        case 1:
+          console.log(entry.intersectionRatio);
+          let anim_offer_con_one =
+            document.getElementById("anim_offer_con_one");
+          if (entry.intersectionRatio > 0) {
+            anim_offer_con_one.style.background =
+              "linear-gradient(120deg, #161f6d, #565ea5)";
+          } else {
+            anim_offer_con_one.style.background = "unset";
+          }
+          break;
+
+        default:
+          break;
+      }
+    });
   });
 
   useEffect(() => {
@@ -91,11 +110,14 @@ function App() {
     });
 
     // For anim_offer
-    offerMagic.observe(document.querySelector(".anim_offer"));
+    elements = document.querySelectorAll(".anim_offer");
+    elements.forEach((o_anim) => {
+      offerMagic.observe(o_anim);
+    });
   }, [magic]);
 
   return (
-    <div className="app">
+    <div className="app" onScroll={onScroll}>
       {/* scrollToTop */}
 
       <div
@@ -139,7 +161,7 @@ function App() {
       {/* s_offer */}
 
       <section className="s_offer">
-        <div>
+        <div className="anim_offer" id="anim_offer_con_one">
           <h1>What We Offer ?</h1>
           <div className="anim_offer">
             <div className="offer_anim_card" onMouseOver={() => setOffer(1)}>
@@ -165,7 +187,6 @@ function App() {
         <div>
           <div>
             {(() => {
-              console.log(offersState);
               switch (offersState) {
                 case 1:
                   return (
@@ -301,6 +322,7 @@ function App() {
                   break;
 
                 default:
+                  return <></>;
                   break;
               }
             })()}
@@ -312,7 +334,87 @@ function App() {
 
       <section className="s_scouting">
         <h1>What We Are Scouting For?</h1>
+        <div>
+          <div>
+            <h1>One</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
+              similique delectus doloribus expedita vel quia ullam at tempora!
+              Minima sequi, tenetur dignissimos exercitationem eius odit alias
+              eligendi magni repellendus eaque voluptatibus voluptatem officiis
+              aliquam non molestiae numquam delectus expedita quod ratione.
+              Vitae, eligendi!
+            </p>
+          </div>
+          <div>
+            <h1>Two</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
+              similique delectus doloribus expedita vel quia ullam at tempora!
+              Minima sequi, tenetur dignissimos exercitationem eius odit alias
+              eligendi magni repellendus eaque voluptatibus voluptatem officiis
+              aliquam non molestiae numquam delectus expedita quod ratione.
+              Vitae, eligendi!
+            </p>
+          </div>
+          <div>
+            <h1>Three</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
+              similique delectus doloribus expedita vel quia ullam at tempora!
+              Minima sequi, tenetur dignissimos exercitationem eius odit alias
+              eligendi magni repellendus eaque voluptatibus voluptatem officiis
+              aliquam non molestiae numquam delectus expedita quod ratione.
+              Vitae, eligendi!
+            </p>
+          </div>
+          <div>
+            <h1>Four</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
+              similique delectus doloribus expedita vel quia ullam at tempora!
+              Minima sequi, tenetur dignissimos exercitationem eius odit alias
+              eligendi magni repellendus eaque voluptatibus voluptatem officiis
+              aliquam non molestiae numquam delectus expedita quod ratione.
+              Vitae, eligendi!
+            </p>
+          </div>
+          <div>
+            <h1>Five</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
+              similique delectus doloribus expedita vel quia ullam at tempora!
+              Minima sequi, tenetur dignissimos exercitationem eius odit alias
+              eligendi magni repellendus eaque voluptatibus voluptatem officiis
+              aliquam non molestiae numquam delectus expedita quod ratione.
+              Vitae, eligendi!
+            </p>
+          </div>
+          <div>
+            <h1>Six</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
+              similique delectus doloribus expedita vel quia ullam at tempora!
+              Minima sequi, tenetur dignissimos exercitationem eius odit alias
+              eligendi magni repellendus eaque voluptatibus voluptatem officiis
+              aliquam non molestiae numquam delectus expedita quod ratione.
+              Vitae, eligendi!
+            </p>
+          </div>
+        </div>
       </section>
+      <footer>
+        <a href="">Privacy Policy</a>
+        <a href="">Disclaimer</a>
+        <a href="">Terms And Conditions</a>
+        <span>Copyright © Grape Studio</span>
+      </footer>
     </div>
   );
 }
