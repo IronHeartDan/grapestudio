@@ -4,11 +4,13 @@ import asset_one from "./asset_one.svg";
 import wave from "./wave.svg";
 import { Button } from "@material-ui/core";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useEffect, useState } from "react";
 
 function App() {
   const [scrollTopState, setScrollTop] = useState(false);
   const [offersState, setOffer] = useState(0);
+  const [scoutState, setScoute] = useState(0);
 
   const onScroll = (e) => {
     if (e.target.scrollTop > 100) {
@@ -335,8 +337,23 @@ function App() {
       <section className="s_scouting">
         <h1>What We Are Scouting For?</h1>
         <div>
-          <div>
+          <div style={{ height: scoutState == 1 ? "150px" : "0" }}>
             <h1>One</h1>
+            <div
+              className="expand"
+              style={{
+                transform:
+                  scoutState == 1
+                    ? "translate(-120%, -60%) rotate(180deg)"
+                    : "translate(-120%, -60%)",
+              }}
+            >
+              <Button
+                onClick={() => (scoutState != 1 ? setScoute(1) : setScoute(0))}
+              >
+                <ExpandMoreIcon />
+              </Button>
+            </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
@@ -347,8 +364,23 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div>
+          <div style={{ height: scoutState == 2 ? "150px" : "0" }}>
             <h1>Two</h1>
+            <div
+              className="expand"
+              style={{
+                transform:
+                  scoutState == 2
+                    ? "translate(-120%, -60%) rotate(180deg)"
+                    : "translate(-120%, -60%)",
+              }}
+            >
+              <Button
+                onClick={() => (scoutState != 2 ? setScoute(2) : setScoute(0))}
+              >
+                <ExpandMoreIcon />
+              </Button>
+            </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
@@ -359,8 +391,23 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div>
+          <div style={{ height: scoutState == 3 ? "150px" : "0" }}>
             <h1>Three</h1>
+            <div
+              className="expand"
+              style={{
+                transform:
+                  scoutState == 3
+                    ? "translate(-120%, -60%) rotate(180deg)"
+                    : "translate(-120%, -60%)",
+              }}
+            >
+              <Button
+                onClick={() => (scoutState != 3 ? setScoute(3) : setScoute(0))}
+              >
+                <ExpandMoreIcon />
+              </Button>
+            </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
@@ -371,8 +418,23 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div>
+          <div style={{ height: scoutState == 4 ? "150px" : "0" }}>
             <h1>Four</h1>
+            <div
+              className="expand"
+              style={{
+                transform:
+                  scoutState == 4
+                    ? "translate(-120%, -60%) rotate(180deg)"
+                    : "translate(-120%, -60%)",
+              }}
+            >
+              <Button
+                onClick={() => (scoutState != 4 ? setScoute(4) : setScoute(0))}
+              >
+                <ExpandMoreIcon />
+              </Button>
+            </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
@@ -383,8 +445,23 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div>
+          <div style={{ height: scoutState == 5 ? "150px" : "0" }}>
             <h1>Five</h1>
+            <div
+              className="expand"
+              style={{
+                transform:
+                  scoutState == 5
+                    ? "translate(-120%, -60%) rotate(180deg)"
+                    : "translate(-120%, -60%)",
+              }}
+            >
+              <Button
+                onClick={() => (scoutState != 5 ? setScoute(5) : setScoute(0))}
+              >
+                <ExpandMoreIcon />
+              </Button>
+            </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam
@@ -395,8 +472,23 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div>
+          <div style={{ height: scoutState == 6 ? "150px" : "0" }}>
             <h1>Six</h1>
+            <div
+              className="expand"
+              style={{
+                transform:
+                  scoutState == 6
+                    ? "translate(-120%, -60%) rotate(180deg)"
+                    : "translate(-120%, -60%)",
+              }}
+            >
+              <Button
+                onClick={() => (scoutState != 6 ? setScoute(6) : setScoute(0))}
+              >
+                <ExpandMoreIcon />
+              </Button>
+            </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Aspernatur magni soluta, quis, impedit accusantium, sapiente ipsam

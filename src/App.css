@@ -437,6 +437,7 @@ section {
 
 .s_scouting > h1 {
   font-size: 3rem;
+  margin: 3rem 0px;
 }
 
 .s_scouting > div {
@@ -450,40 +451,37 @@ section {
 .s_scouting > div > div {
   border-top: 5px solid white;
   width: 100%;
-  height: fit-content;
   transition: all ease 0.5s;
+  overflow: hidden;
 }
 
 .s_scouting > div > div > p {
-  visibility: hidden;
-  transition: all ease 0.5s;
-}
-
-.s_scouting > div > div:hover {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.s_scouting > div > div:hover > p {
-  visibility: visible;
+  margin: 10px;
+  padding: 10px;
 }
 
 .s_scouting > div > div > h1 {
-  transform: translateY(-150%);
+  position: absolute;
+  transform: translate(10px, -150%);
 }
 
-.s_scouting > div > div::before {
+.s_scouting > div > div > .expand {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 10px black;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
-  content: "^";
-  width: 50px;
-  height: 50px;
   border-radius: 50%;
-  background-color: white;
-  position: absolute;
-  transform: translate(-120%, -60%) rotate(180deg);
+  overflow: hidden;
+  transition: all ease 0.5s;
+  /* transform: translate(-120%, -60%); */
+}
+
+.s_scouting > div > div > .expand > button {
+  color: white;
+  padding: 15px;
 }
 
 /* footer */
