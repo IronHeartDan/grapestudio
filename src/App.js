@@ -1,16 +1,23 @@
 import "./App.css";
 import logo from "./logo.svg";
 import asset_one from "./asset_one.svg";
-import wave from "./wave.svg";
+import Wave from "./wave.svg";
+import mWave from "./mWave.svg";
+import slogan from "./Slogan.svg";
+import MenuIcon from "@material-ui/icons/Menu";
 import { Button } from "@material-ui/core";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import CancelIcon from "@material-ui/icons/Cancel";
 import { useEffect, useState } from "react";
 
 function App() {
   const [scrollTopState, setScrollTop] = useState(false);
   const [offersState, setOffer] = useState(0);
   const [scoutState, setScoute] = useState(0);
+  const [cFromState, setcFrom] = useState(false);
+  const [mMenu, setmMenu] = useState(false);
 
   const onScroll = (e) => {
     if (e.target.scrollTop > 100) {
@@ -24,104 +31,104 @@ function App() {
     document.querySelector(".app").scrollTop = 0;
   };
 
-  const magic = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      let animType = "none";
-      switch (index) {
-        case 0:
-          animType = "PopBottom";
-          break;
-        case 1:
-          animType = "PopBottom";
-          break;
-        default:
-          animType = "PopBottom";
-      }
-      if (entry.intersectionRatio > 0) {
-        entry.target.style.animation = `${animType} ease 1s 0s`;
-        entry.target.style.opacity = "1";
-      } else {
-        entry.target.style.animation = "none";
-      }
-    });
-  });
-
-  const offerMagic = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      console.log(index);
-      switch (index) {
-        case 0:
-          if (entry.intersectionRatio > 0) {
-            let offer_anim_cards =
-              document.querySelectorAll(".offer_anim_card");
-            offer_anim_cards.forEach((card, ci) => {
-              switch (ci) {
-                case 0:
-                  card.style.animation =
-                    " magix 3s 0s forwards ease, one 1s 18s forwards ease,card 0s 18s forwards ease";
-                  break;
-                case 1:
-                  card.style.animation =
-                    "magix 5s 2s forwards ease, two 1s 18.5s forwards ease,card 0s 18s forwards ease";
-                  break;
-                case 2:
-                  card.style.animation =
-                    "magix 5s 5s forwards ease, three 1s 19s forwards ease,card 0s 18s forwards ease";
-                  break;
-                case 3:
-                  card.style.animation =
-                    " magix 5s 8s forwards ease, four 1s 19.5s forwards ease,card 0s 18s forwards ease";
-                  break;
-                case 4:
-                  card.style.animation =
-                    " magix 5s 11s forwards ease, five 1s 20s forwards ease,card 0s 18s forwards ease";
-                  break;
-                case 5:
-                  card.style.animation =
-                    "magix 5s 14s forwards ease, six 0.5s 20.5s forwards ease,card 0s 18s forwards ease";
-                  break;
-
-                default:
-                  break;
-              }
-            });
-          }
-          break;
-
-        case 1:
-          console.log(entry.intersectionRatio);
-          let anim_offer_con_one =
-            document.getElementById("anim_offer_con_one");
-          if (entry.intersectionRatio > 0) {
-            anim_offer_con_one.style.background =
-              "linear-gradient(120deg, #161f6d, #565ea5)";
-          } else {
-            anim_offer_con_one.style.background = "unset";
-          }
-          break;
-
-        default:
-          break;
-      }
-    });
-  });
-
   useEffect(() => {
+    console.log("UseEffect");
+    const magic = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        let animType = "none";
+        switch (index) {
+          case 0:
+            animType = "PopBottom";
+            break;
+          case 1:
+            animType = "PopBottom";
+            break;
+          default:
+            animType = "PopBottom";
+        }
+        if (entry.intersectionRatio > 0) {
+          entry.target.style.animation = `${animType} ease 1s 0s`;
+          entry.target.style.opacity = "1";
+        } else {
+          entry.target.style.animation = "none";
+        }
+      });
+    });
     // For Anim
     let elements = document.querySelectorAll(".anim");
     elements.forEach((element) => {
       magic.observe(element);
     });
 
-    // For anim_offer
-    elements = document.querySelectorAll(".anim_offer");
-    elements.forEach((o_anim) => {
-      offerMagic.observe(o_anim);
+    const offerMagic = new IntersectionObserver((entries) => {
+      console.log("djbfsdj");
+      if (entries[0].intersectionRatio > 0) {
+        let offer_anim_cards = document.querySelectorAll(".offer_anim_card");
+        offer_anim_cards.forEach((card, ci) => {
+          switch (ci) {
+            case 0:
+              card.style.animation =
+                " magix 3s 0s forwards ease, one 1s 18s forwards ease,card 0s 18s forwards ease";
+              break;
+            case 1:
+              card.style.animation =
+                "magix 5s 2s forwards ease, two 1s 18.5s forwards ease,card 0s 18s forwards ease";
+              break;
+            case 2:
+              card.style.animation =
+                "magix 5s 5s forwards ease, three 1s 19s forwards ease,card 0s 18s forwards ease";
+              break;
+            case 3:
+              card.style.animation =
+                " magix 5s 8s forwards ease, four 1s 19.5s forwards ease,card 0s 18s forwards ease";
+              break;
+            case 4:
+              card.style.animation =
+                " magix 5s 11s forwards ease, five 1s 20s forwards ease,card 0s 18s forwards ease";
+              break;
+            case 5:
+              card.style.animation =
+                "magix 5s 14s forwards ease, six 0.5s 20.5s forwards ease,card 0s 18s forwards ease";
+              break;
+
+            default:
+              break;
+          }
+        });
+      }
     });
-  }, [magic, offerMagic]);
+
+    // For anim_offer
+    let oE = document.querySelector(".anim_offer");
+    offerMagic.observe(oE);
+  });
 
   return (
     <div className="app" onScroll={onScroll}>
+      {/* Contact us */}
+      <div
+        className={cFromState ? "contactUs expandContactUs" : "contactUs"}
+        style={{
+          transform: scrollTopState ? "translateY(-70px)" : "translateY(0px)",
+        }}
+      >
+        <Button
+          style={{
+            position: cFromState ? "absolute" : "unset",
+            top: cFromState ? "0" : "unset",
+            right: cFromState ? "0" : "unset",
+            color: cFromState ? "white" : "unset",
+          }}
+          onClick={() => {
+            cFromState ? setcFrom(false) : setcFrom(true);
+          }}
+        >
+          {cFromState ? <CancelIcon /> : <ChatBubbleIcon />}
+        </Button>
+      </div>
+
+      {/* Contact us */}
+
       {/* scrollToTop */}
 
       <div
@@ -141,23 +148,49 @@ function App() {
       {/* main */}
 
       <section className="s_main">
-        <img src={logo} alt="logo" className="logo" />
-        <nav>
-          <a href="/">Contact us</a>
-          <a href="/">Get Started</a>
-          <a href="/">About us</a>
-          <a href="/">Portfolio</a>
-          <a href="/">Sign Up</a>
-        </nav>
-        <div className="slogan_con anim">
-          <h1>Passionate You </h1>
-          <h1>With Technopowering</h1>
-          <h1> Your Security</h1>
+        <header>
+          <img src={logo} alt="logo" />
+          <nav>
+            <a href="/">Contact us</a>
+            <a href="/">Get Started</a>
+            <a href="/">About us</a>
+            <a href="/">Portfolio</a>
+            <a href="/">Sign Up</a>
+          </nav>
+          <div
+            className="menu"
+            style={{
+              position: mMenu ? "absolute" : "unset",
+              top: mMenu ? "0" : "unset",
+              right: mMenu ? "0" : "unset",
+              width: mMenu ? "100vw" : "64px",
+              height: mMenu ? "100vh" : "59px",
+              backdropFilter: mMenu ? "blur(5px)" : "unset",
+              boxShadow: mMenu ? " 0 0 10px 0 black" : "unset",
+            }}
+          >
+            <Button
+              onClick={() => {
+                mMenu ? setmMenu(false) : setmMenu(true);
+              }}
+            >
+              {mMenu ? <CancelIcon /> : <MenuIcon />}
+            </Button>
+          </div>
+        </header>
+        <div className="main_con">
+          <div>
+            <img src={asset_one} alt="asset_one" />
+          </div>
+          <div>
+            <img src={slogan} alt="slogan" />
+            <a href="/" className="main_btn">
+              Get Started
+            </a>
+          </div>
         </div>
-
-        <img src={asset_one} alt="Asset" className="asset_one" />
-        <Button>Get Started!</Button>
-        <img src={wave} alt="wave" className="wave" />
+        <img src={Wave} alt="Wave" className="Wave" />
+        <img src={mWave} alt="mWave" className="mWave" />
       </section>
 
       {/* main */}
@@ -166,7 +199,7 @@ function App() {
 
       <section className="s_offer">
         <div className="anim_offer" id="anim_offer_con_one">
-          <div className="anim_offer">
+          <div>
             <div className="offer_anim_card" onMouseOver={() => setOffer(1)}>
               <h6>Mobile App development</h6>
             </div>
@@ -217,7 +250,6 @@ function App() {
                       </ul>
                     </>
                   );
-                  break;
                 case 2:
                   return (
                     <>
@@ -244,7 +276,6 @@ function App() {
                       </ul>
                     </>
                   );
-                  break;
                 case 3:
                   return (
                     <>
@@ -267,7 +298,6 @@ function App() {
                       </ul>
                     </>
                   );
-                  break;
                 case 4:
                   return (
                     <>
@@ -302,7 +332,6 @@ function App() {
                       </ul>
                     </>
                   );
-                  break;
                 case 5:
                   return (
                     <>
@@ -312,7 +341,6 @@ function App() {
                       </ul>
                     </>
                   );
-                  break;
                 case 6:
                   return (
                     <>
@@ -322,11 +350,9 @@ function App() {
                       </ul>
                     </>
                   );
-                  break;
 
                 default:
                   return <></>;
-                  break;
               }
             })()}
           </div>
