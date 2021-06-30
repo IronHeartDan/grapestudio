@@ -34,6 +34,8 @@ function App() {
         case 1:
           animType = "PopBottom";
           break;
+        default:
+          animType = "PopBottom";
       }
       if (entry.intersectionRatio > 0) {
         entry.target.style.animation = `${animType} ease 1s 0s`;
@@ -116,7 +118,7 @@ function App() {
     elements.forEach((o_anim) => {
       offerMagic.observe(o_anim);
     });
-  }, [magic]);
+  }, [magic, offerMagic]);
 
   return (
     <div className="app" onScroll={onScroll}>
@@ -141,11 +143,11 @@ function App() {
       <section className="s_main">
         <img src={logo} alt="logo" className="logo" />
         <nav>
-          <a href="#">Contact us</a>
-          <a href="#">Get Started</a>
-          <a href="#">About us</a>
-          <a href="#">Portfolio</a>
-          <a href="#">Sign Up</a>
+          <a href="/">Contact us</a>
+          <a href="/">Get Started</a>
+          <a href="/">About us</a>
+          <a href="/">Portfolio</a>
+          <a href="/">Sign Up</a>
         </nav>
         <div className="slogan_con anim">
           <h1>Passionate You </h1>
@@ -164,7 +166,6 @@ function App() {
 
       <section className="s_offer">
         <div className="anim_offer" id="anim_offer_con_one">
-          <h1>What We Offer ?</h1>
           <div className="anim_offer">
             <div className="offer_anim_card" onMouseOver={() => setOffer(1)}>
               <h6>Mobile App development</h6>
@@ -337,19 +338,19 @@ function App() {
       <section className="s_scouting">
         <h1>What We Are Scouting For?</h1>
         <div>
-          <div style={{ height: scoutState == 1 ? "150px" : "0" }}>
+          <div style={{ height: scoutState === 1 ? "150px" : "0" }}>
             <h1>One</h1>
             <div
               className="expand"
               style={{
                 transform:
-                  scoutState == 1
+                  scoutState === 1
                     ? "translate(-120%, -60%) rotate(180deg)"
                     : "translate(-120%, -60%)",
               }}
             >
               <Button
-                onClick={() => (scoutState != 1 ? setScoute(1) : setScoute(0))}
+                onClick={() => (scoutState !== 1 ? setScoute(1) : setScoute(0))}
               >
                 <ExpandMoreIcon />
               </Button>
@@ -364,19 +365,19 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div style={{ height: scoutState == 2 ? "150px" : "0" }}>
+          <div style={{ height: scoutState === 2 ? "150px" : "0" }}>
             <h1>Two</h1>
             <div
               className="expand"
               style={{
                 transform:
-                  scoutState == 2
+                  scoutState === 2
                     ? "translate(-120%, -60%) rotate(180deg)"
                     : "translate(-120%, -60%)",
               }}
             >
               <Button
-                onClick={() => (scoutState != 2 ? setScoute(2) : setScoute(0))}
+                onClick={() => (scoutState !== 2 ? setScoute(2) : setScoute(0))}
               >
                 <ExpandMoreIcon />
               </Button>
@@ -391,19 +392,19 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div style={{ height: scoutState == 3 ? "150px" : "0" }}>
+          <div style={{ height: scoutState === 3 ? "150px" : "0" }}>
             <h1>Three</h1>
             <div
               className="expand"
               style={{
                 transform:
-                  scoutState == 3
+                  scoutState === 3
                     ? "translate(-120%, -60%) rotate(180deg)"
                     : "translate(-120%, -60%)",
               }}
             >
               <Button
-                onClick={() => (scoutState != 3 ? setScoute(3) : setScoute(0))}
+                onClick={() => (scoutState !== 3 ? setScoute(3) : setScoute(0))}
               >
                 <ExpandMoreIcon />
               </Button>
@@ -418,19 +419,19 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div style={{ height: scoutState == 4 ? "150px" : "0" }}>
+          <div style={{ height: scoutState === 4 ? "150px" : "0" }}>
             <h1>Four</h1>
             <div
               className="expand"
               style={{
                 transform:
-                  scoutState == 4
+                  scoutState === 4
                     ? "translate(-120%, -60%) rotate(180deg)"
                     : "translate(-120%, -60%)",
               }}
             >
               <Button
-                onClick={() => (scoutState != 4 ? setScoute(4) : setScoute(0))}
+                onClick={() => (scoutState !== 4 ? setScoute(4) : setScoute(0))}
               >
                 <ExpandMoreIcon />
               </Button>
@@ -445,19 +446,19 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div style={{ height: scoutState == 5 ? "150px" : "0" }}>
+          <div style={{ height: scoutState === 5 ? "150px" : "0" }}>
             <h1>Five</h1>
             <div
               className="expand"
               style={{
                 transform:
-                  scoutState == 5
+                  scoutState === 5
                     ? "translate(-120%, -60%) rotate(180deg)"
                     : "translate(-120%, -60%)",
               }}
             >
               <Button
-                onClick={() => (scoutState != 5 ? setScoute(5) : setScoute(0))}
+                onClick={() => (scoutState !== 5 ? setScoute(5) : setScoute(0))}
               >
                 <ExpandMoreIcon />
               </Button>
@@ -472,19 +473,19 @@ function App() {
               Vitae, eligendi!
             </p>
           </div>
-          <div style={{ height: scoutState == 6 ? "150px" : "0" }}>
+          <div style={{ height: scoutState === 6 ? "150px" : "0" }}>
             <h1>Six</h1>
             <div
               className="expand"
               style={{
                 transform:
-                  scoutState == 6
+                  scoutState === 6
                     ? "translate(-120%, -60%) rotate(180deg)"
                     : "translate(-120%, -60%)",
               }}
             >
               <Button
-                onClick={() => (scoutState != 6 ? setScoute(6) : setScoute(0))}
+                onClick={() => (scoutState !== 6 ? setScoute(6) : setScoute(0))}
               >
                 <ExpandMoreIcon />
               </Button>
@@ -502,10 +503,12 @@ function App() {
         </div>
       </section>
       <footer>
-        <a href="">Privacy Policy</a>
-        <a href="">Disclaimer</a>
-        <a href="">Terms And Conditions</a>
-        <span>Copyright © Grape Studio</span>
+        <a href="/">Privacy Policy</a>
+        <span>|</span>
+        <a href="/">Disclaimer</a>
+        <span>|</span>
+        <a href="/">Terms And Conditions</a>
+        <p>Copyright © Grape Studio Enterprise</p>
       </footer>
     </div>
   );

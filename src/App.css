@@ -280,7 +280,7 @@ section {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 10px;
+  padding: 50px;
 }
 .s_offer > div:first-of-type > div > div {
   position: absolute;
@@ -313,7 +313,7 @@ section {
   to {
     position: relative;
     margin: 10px;
-    width: calc(50% - 20px);
+    width: calc(50 - 20px);
     height: calc(33.333% - 20px);
     flex-shrink: 0;
   }
@@ -442,7 +442,7 @@ section {
 
 .s_scouting > div {
   padding: 100px;
-  width: 60%;
+  width: 80%;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -509,6 +509,10 @@ footer > a:hover {
 }
 
 footer > span {
+  color: white;
+}
+
+footer > p {
   user-select: none;
   position: absolute;
   left: 0;
