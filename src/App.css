@@ -131,7 +131,7 @@
 }
 
 section {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100vh;
   height: auto;
@@ -271,145 +271,85 @@ section {
 /* .s_offer */
 
 .s_offer {
-  display: flex;
-  height: max-content;
-}
-
-.s_offer > div {
-  flex: 1;
-}
-
-.s_offer > div:first-of-type {
-  font-size: xx-large;
-  display: flex;
-  flex-direction: column;
-}
-
-.s_offer > div:first-of-type > h1 {
-  margin-left: 40px;
-  margin-top: 40px;
-}
-.s_offer > div:first-of-type > div {
   position: relative;
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 50px;
+  overflow: auto;
+  max-height: 100vh;
 }
-.s_offer > div:first-of-type > div > div {
-  position: absolute;
-  width: 33.333%;
-  height: 33.333%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  color: black;
+
+.s_offer::-webkit-scrollbar {
+  display: none;
+}
+
+.s_offer > .offer_anim_card {
+  margin: 2em auto;
+  position: sticky;
+  top: 2em;
+  width: 60vw;
+  height: 60vh;
+  transform-origin: center top;
   border-radius: 20px;
-  background-color: white;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 0 10px 2px black;
+  box-shadow: 0 0 10px 1px black;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1em;
 }
 
-.s_offer > div:first-of-type > div > div > h6 {
-  position: absolute;
-  transition: all ease-in 0.2s;
-  text-align: center;
+.s_offer > .offer_anim_card > h1 {
+  width: 100%;
+  height: 100%;
+  background-color: rebeccapurple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
 }
 
-.s_offer > div:first-of-type > div > div:hover > h6 {
-  font-size: small;
-  transform: translateY(100px) scale(1.2);
+.s_offer > .offer_anim_card:nth-of-type(2) {
+  /* top: 55%; */
+  top: 3em;
 }
 
-@keyframes card {
-  to {
-    position: relative;
-    margin: 10px;
-    width: calc(50 - 20px);
-    height: calc(33.333% - 20px);
-    flex-shrink: 0;
-  }
+.s_offer > .offer_anim_card:nth-of-type(3) {
+  /* top: 60%; */
+  top: 4em;
 }
 
-@keyframes magix {
-  0% {
-    opacity: 1;
-    transform: translateY(calc(50vh + 33.333%));
-  }
-
-  50% {
-    border-radius: 20px;
-    opacity: 1;
-    width: 50%;
-    height: 50%;
-    transform: translateY(calc(20vh - 50%));
-  }
-
-  80% {
-    width: 33.333%;
-    opacity: 0;
-    transform: translateY(-100vh);
-  }
+.s_offer > .offer_anim_card:nth-of-type(4) {
+  /* top: 65%; */
+  top: 5em;
+}
+.s_offer > .offer_anim_card:nth-of-type(5) {
+  /* top: 70%; */
+  top: 6em;
 }
 
-@keyframes one {
-  from {
-    transform: translate(-100px, -100px);
-  }
-  to {
-    position: relative;
-    opacity: 1;
-  }
+.s_offer > .offer_anim_card:nth-of-type(6) {
+  /* top: 75%; */
+  top: 7em;
 }
 
-@keyframes two {
-  from {
-    transform: translate(100px, -100px);
-  }
-  to {
-    opacity: 1;
-  }
+/* .s_offer > .offer_anim_card:nth-of-type(7) {
+  // top: 80%; //
+  visibility: hidden;
+} */
+
+.s_offer > .offer_anim_card:nth-of-type(2) > h1 {
+  background: linear-gradient(90deg, lightgreen, orange);
 }
 
-@keyframes three {
-  from {
-    transform: translate(-100px, 0px);
-  }
-  to {
-    opacity: 1;
-  }
+.s_offer > .offer_anim_card:nth-of-type(3) > h1 {
+  background: linear-gradient(90deg, lightblue, mediumorchid);
 }
 
-@keyframes four {
-  from {
-    transform: translate(100px, 0px);
-  }
-  to {
-    opacity: 1;
-  }
+.s_offer > .offer_anim_card:nth-of-type(4) > h1 {
+  background: linear-gradient(90deg, mediumorchid, moccasin);
+}
+.s_offer > .offer_anim_card:nth-of-type(5) > h1 {
+  background: linear-gradient(90deg, moccasin, rebeccapurple);
 }
 
-@keyframes five {
-  from {
-    transform: translate(-100px, 100px);
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes six {
-  from {
-    transform: translate(100px, 100px);
-  }
-  to {
-    opacity: 1;
-  }
+.s_offer > .offer_anim_card:nth-of-type(6) > h1 {
+  background-color: rebeccapurple;
 }
 
 /* Offer Anim */
@@ -455,21 +395,26 @@ section {
 .s_scouting > h1 {
   font-size: 3rem;
   margin: 3rem 0px;
+  transition: all ease 200ms;
 }
 
 .s_scouting > div {
-  padding: 100px;
-  width: 80%;
+  width: 60%;
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-around;
 }
 .s_scouting > div > div {
   border-top: 5px solid white;
   width: 100%;
   transition: all ease 0.5s;
-  overflow: hidden;
+  overflow: auto;
+}
+
+.s_scouting > div > div::-webkit-scrollbar {
+  display: none;
 }
 
 .s_scouting > div > div > p {
@@ -514,18 +459,25 @@ footer {
   padding: 10px;
 }
 
-footer > a {
+footer > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer > div > a {
   text-decoration: none;
   color: white;
   margin: 5px;
   padding: 5px;
 }
 
-footer > a:hover {
+footer > div > a:hover {
   color: yellow;
 }
 
-footer > span {
+footer > div > span {
   color: white;
 }
 
@@ -542,6 +494,7 @@ footer > p {
 /* Tablet */
 
 @media (max-width: 1200px) {
+  /* s_main */
   .s_main > header {
     height: calc(100px + 0.5em);
   }
@@ -598,6 +551,37 @@ footer > p {
   .s_main > .mWave {
     display: block;
   }
+
+  /* .s_main */
+
+  /* .s_scouting */
+  .s_scouting > h1 {
+    margin: 1em;
+  }
+  /* .s_scouting */
+
+  /* .s_offer */
+
+  .s_offer > .offer_anim_card {
+    margin-top: 1em;
+    border-radius: 10px;
+    width: 85vw;
+    box-shadow: 0 0 5px 1px black;
+  }
+  .s_offer > .offer_anim_card > h1 {
+    border-radius: 10px;
+  }
+
+  /* .s_offer */
+
+  /* footer */
+  footer {
+    flex-direction: column;
+  }
+  footer > p {
+    position: unset;
+  }
+  /* footer */
 }
 
 /* Tablet end */
@@ -605,6 +589,7 @@ footer > p {
 /* Mobile */
 
 @media (max-width: 800px) {
+  /* .s_main */
   .s_main > header {
     height: calc(60px + 0.5em);
   }
@@ -612,6 +597,15 @@ footer > p {
     margin: 0.5em;
     width: 60px;
     height: 60px;
+  }
+  /* .s_main */
+  /* .s_scouting */
+  .s_scouting > h1 {
+    font-size: 2em;
+  }
+  .s_scouting > div > div > .expand {
+    width: 40px;
+    height: 40px;
   }
 }
 
