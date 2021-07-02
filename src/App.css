@@ -85,8 +85,9 @@
   right: 0;
   margin: 10px;
   box-shadow: 0 0 10px black;
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(5px);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -100,11 +101,95 @@
 }
 
 .expandContactUs {
-  overflow: visible !important;
-  width: "450px" !important;
-  height: "800px" !important;
-  border-radius: "10px" !important;
-  margin: "50px" !important;
+  background-color: white !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+  overflow: auto !important;
+  width: 450px !important;
+  height: 800px !important;
+  border-radius: 10px !important;
+  margin: 50px !important;
+  mix-blend-mode: unset !important;
+}
+
+.expandContactUs > .contactUsHeader {
+  padding-bottom: 40px;
+  background-color: teal;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.expandContactUs > .contactUsHeader > h1 {
+  user-select: none;
+  padding: 10px;
+  font-size: large;
+  margin-left: 35px;
+  font-weight: unset;
+  text-align: center;
+  flex: 1;
+}
+.expandContactUs > .contactUsHeader > button {
+  padding: 10px;
+  min-width: unset;
+  color: white;
+}
+
+.expandContactUs > .contactUsInfo {
+  user-select: none;
+  background-color: rgb(139, 192, 194);
+  transform: translateY(-50%);
+  margin: 0% 10px 0 25px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.expandContactUs > .contactUsInfo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-right-color: black;
+  border-left: 0;
+  margin-top: -5px;
+  margin-left: -15px;
+}
+
+.expandContactUs > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.expandContactUs > form > input {
+  width: 80%;
+  margin: 10px;
+  background-color: silver;
+  border: none;
+  outline-color: black;
+  padding: 15px;
+}
+.expandContactUs > form > textarea {
+  min-width: 80%;
+  max-width: 80%;
+  min-height: 200px;
+  resize: vertical;
+  margin: 10px;
+  background-color: silver;
+  border: none;
+  outline-color: black;
+  padding: 15px;
+  font-size: larger;
+}
+
+.expandContactUs > form > button {
+  border: none;
+  background-color: teal;
+  color: white;
+  font-size: larger;
+  padding: 15px 25px;
 }
 
 .scrollToTop {
@@ -116,7 +201,7 @@
   margin: 10px;
   border-radius: 50%;
   box-shadow: 0 0 10px black;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,16 +235,19 @@ section {
 
 .s_main > header {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   /* background-color: lightgreen; */
   width: 100%;
-  height: 13.75em;
+  /* height: 13.75em; */
 }
 
 .s_main > header > img {
   margin: 1.25em;
-  position: absolute;
-  width: 12.5em;
-  height: 12.5em;
+  /* position: absolute; */
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   cursor: pointer;
   transition: all ease 250ms;
@@ -167,7 +255,6 @@ section {
 
 .s_main > header > .menu {
   display: none;
-  float: right;
   transition: all ease 250ms;
   z-index: 1000;
 }
@@ -179,9 +266,9 @@ section {
 }
 
 .s_main > header > nav {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  right: 0;
+  right: 0; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -294,14 +381,13 @@ section {
   padding: 1em;
 }
 
+.s_offer > .offer_anim_card > img {
+  width: 100%;
+}
+
 .s_offer > .offer_anim_card > h1 {
   width: 100%;
   height: 100%;
-  background-color: rebeccapurple;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
 }
 
 .s_offer > .offer_anim_card:nth-of-type(2) {
@@ -333,7 +419,7 @@ section {
   visibility: hidden;
 } */
 
-.s_offer > .offer_anim_card:nth-of-type(2) > h1 {
+/* .s_offer > .offer_anim_card:nth-of-type(2) > h1 {
   background: linear-gradient(90deg, lightgreen, orange);
 }
 
@@ -350,7 +436,7 @@ section {
 
 .s_offer > .offer_anim_card:nth-of-type(6) > h1 {
   background-color: rebeccapurple;
-}
+} */
 
 /* Offer Anim */
 
@@ -487,6 +573,7 @@ footer > p {
   left: 0;
   color: white;
   margin: 10px;
+  text-align: center;
 }
 
 /* footer end*/
@@ -496,10 +583,11 @@ footer > p {
 @media (max-width: 1200px) {
   /* s_main */
   .s_main > header {
-    height: calc(100px + 0.5em);
+    height: calc(100px + 2em);
+    align-items: unset;
   }
   .s_main > header > img {
-    margin: 0.5em;
+    margin: 1em;
     width: 100px;
     height: 100px;
   }
@@ -589,12 +677,21 @@ footer > p {
 /* Mobile */
 
 @media (max-width: 800px) {
+  .expandContactUs {
+    overflow: visible !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: unset !important;
+    margin: unset !important;
+    z-index: 1001;
+  }
+
   /* .s_main */
   .s_main > header {
-    height: calc(60px + 0.5em);
+    height: calc(60px + 2em);
   }
   .s_main > header > img {
-    margin: 0.5em;
+    margin: 1em;
     width: 60px;
     height: 60px;
   }

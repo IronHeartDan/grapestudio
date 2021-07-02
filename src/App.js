@@ -4,17 +4,17 @@ import asset_one from "./asset_one.svg";
 import Wave from "./wave.svg";
 import mWave from "./mWave.svg";
 import slogan from "./Slogan.svg";
+import card_asset from "./card_asset.svg";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Button } from "@material-ui/core";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import CancelIcon from "@material-ui/icons/Cancel";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [scrollTopState, setScrollTop] = useState(false);
-  const [offersState, setOffer] = useState(0);
   const [scoutState, setScoute] = useState(0);
   const [cFromState, setcFrom] = useState(false);
   const [mMenu, setmMenu] = useState(false);
@@ -104,7 +104,11 @@ function App() {
   // });
 
   return (
-    <div className="app" onScroll={onScroll}>
+    <div
+      className="app"
+      onScroll={onScroll}
+      style={{ overflow: mMenu ? "hidden" : "auto" }}
+    >
       {/* Contact us */}
       <div
         className={cFromState ? "contactUs expandContactUs" : "contactUs"}
@@ -112,19 +116,49 @@ function App() {
           transform: scrollTopState ? "translateY(-70px)" : "translateY(0px)",
         }}
       >
-        <Button
-          style={{
-            position: cFromState ? "absolute" : "unset",
-            top: cFromState ? "0" : "unset",
-            right: cFromState ? "0" : "unset",
-            color: cFromState ? "white" : "unset",
-          }}
-          onClick={() => {
-            cFromState ? setcFrom(false) : setcFrom(true);
-          }}
-        >
-          {cFromState ? <CancelIcon /> : <ChatBubbleIcon />}
-        </Button>
+        {cFromState ? (
+          <>
+            <div className="contactUsHeader">
+              <h1>Grape Studio Enterprise</h1>
+              <Button
+                onClick={() => {
+                  setcFrom(false);
+                }}
+              >
+                <CancelIcon />
+              </Button>
+            </div>
+
+            <p className="contactUsInfo">
+              Hi! Let us know how we can help and we’ll respond shortly.
+            </p>
+            <form action="/">
+              <input type="text" name="name" id="name" placeholder="Name*" />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email*"
+              />
+              <textarea
+                name="detail"
+                id="detail"
+                placeholder="How can we help?*"
+              ></textarea>
+              <button type="submit">SEND</button>
+            </form>
+          </>
+        ) : (
+          <>
+            <Button
+              onClick={() => {
+                setcFrom(true);
+              }}
+            >
+              <ChatBubbleIcon />
+            </Button>
+          </>
+        )}
       </div>
 
       {/* Contact us */}
@@ -199,6 +233,7 @@ function App() {
 
       <section className="s_offer">
         <div className="offer_anim_card" id="0">
+          <img src={card_asset} alt="card" />
           <h1>One</h1>
         </div>
         <div className="offer_anim_card" id="1">
