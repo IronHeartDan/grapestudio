@@ -3,15 +3,21 @@ import logo from "./logo.svg";
 import asset_one from "./asset_one.svg";
 import Wave from "./wave.svg";
 import mWave from "./mWave.svg";
-import slogan from "./Slogan.svg";
-import card_asset from "./card_asset.svg";
+import slogan from "./Slogan.png";
+import card_asset_1 from "./web.svg";
+import card_asset_2 from "./webd.svg";
+import card_asset_3 from "./custom.svg";
+import card_asset_4 from "./content.svg";
+import card_asset_5 from "./graphics.svg";
+import card_asset_6 from "./app.svg";
+
 import MenuIcon from "@material-ui/icons/Menu";
 import { Button } from "@material-ui/core";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import CancelIcon from "@material-ui/icons/Cancel";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [scrollTopState, setScrollTop] = useState(false);
@@ -30,6 +36,10 @@ function App() {
   const scrollToTop = () => {
     document.querySelector(".app").scrollTop = 0;
   };
+
+  useEffect(() => {
+    window.screen.orientation.lock("portrait");
+  });
 
   // useEffect(() => {
   //   console.log("UseEffect");
@@ -185,10 +195,10 @@ function App() {
         <header>
           <img src={logo} alt="logo" />
           <nav>
-            <a href="/">Contact us</a>
-            <a href="/">Get Started</a>
+            <a href="/">Home</a>
+            <a href="/">Services</a>
             <a href="/">About us</a>
-            <a href="/">Portfolio</a>
+            <a href="/">Carrers</a>
             <a href="/">Sign Up</a>
           </nav>
           <div
@@ -233,23 +243,108 @@ function App() {
 
       <section className="s_offer">
         <div className="offer_anim_card" id="0">
-          <img src={card_asset} alt="card" />
-          <h1>One</h1>
+          <img src={card_asset_1} alt="card" />
+          <div>
+            <h1>Web/ Mobile App design</h1>
+            <ul>
+              <li>Highly proficient in web/mobile app designing.</li>
+              <li>
+                Offering interactive UI & UX designs for your Mobile
+                applications/Websites.
+              </li>
+              <li>
+                Following professional procedures while designing your
+                respective web/Mobile app.
+              </li>
+              <li>Ensuring timely delivery of orders.</li>
+              <li>Using creative tools to maximize user interactions.</li>
+              <li> Hiring professional UI/UX designers.</li>
+            </ul>
+          </div>
         </div>
         <div className="offer_anim_card" id="1">
-          <h1>Two</h1>
+          <img src={card_asset_2} alt="card" />
+          <div>
+            <h1>Website development</h1>
+            <ul>
+              <li> Highly proficient in website development.</li>
+              <li>
+                Conducting innovative tactic while building static/dynamic
+                websites.
+              </li>
+              <li>
+                Hiring passionate and dedicated individuals to ensure smooth
+                development.
+              </li>
+              <li>Developing dynamic/static websites from scratch.</li>
+              <li>Providing better user interactive interface.</li>
+              <li>
+                Constructing wide sets of websites ranging from (Personal, Photo
+                sharing, writer/author, informative, ecommerce).
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="offer_anim_card" id="2">
+          <img src={card_asset_3} alt="card" />
           <h1>Three</h1>
         </div>
         <div className="offer_anim_card" id="3">
+          <img src={card_asset_4} alt="card" />
           <h1>Four</h1>
         </div>
         <div className="offer_anim_card" id="4">
-          <h1>Five</h1>
+          <img src={card_asset_5} alt="card" />
+          <div>
+            <h1>Graphic designing</h1>
+            <ul>
+              <li>Highly proficient in Graphic designing.</li>
+              <li>
+                <strong>Logo designing:-</strong> ➔ A team of experienced logo
+                designers providing services from basic and complex logo designs
+                for small scale businesses to big enterprising corporations.
+              </li>
+              <li>
+                <strong>Business cards designing:-</strong> ➔ Adding life to
+                your business cards by using creative and professional designing
+                methods while developing them.
+              </li>
+              <li>
+                <strong>Social media posts designing:- </strong> ➔Providing
+                interactive post designs for engaging more audiences.
+              </li>
+              <li>
+                <strong>Business Flyer designing:-</strong> ➔ Creating your own
+                professional business flyer designs allowing you to express the
+                story of your case. Whether it’s for business, promoting,
+                fundraisers etc
+              </li>
+              <li>Ensuring timely delivery of each and every design.</li>
+            </ul>
+          </div>
         </div>
         <div className="offer_anim_card" id="5">
-          <h1>Six</h1>
+          <img src={card_asset_6} alt="card" />
+          <div>
+            <h1>Mobile App development</h1>
+            <ul>
+              <li> Highly proficient in Android app development.</li>
+              <li>
+                Hiring passionate and dedicated developers to produce the best
+                results.
+              </li>
+              <li>
+                Showcasing innovative and enthusiastic approach while building
+                android apps
+              </li>
+              <li>
+                Working with existing and updated technologies for secure and
+                sturdy app development.
+              </li>
+              <li>Providing steady and satisfactory result to our clients.</li>
+              <li>Delivering with exceptional punctuality.</li>
+            </ul>
+          </div>
         </div>
         {/* <div className="offer_anim_card" id="6">
           <h1>Seven</h1>
