@@ -1,6 +1,10 @@
 import "./App.css";
 import logo from "./logo.svg";
 import asset_one from "./asset_one.svg";
+import asset_two from "./asset_two.svg";
+
+import contactUs from "./contactUs.svg";
+
 import Wave from "./wave.svg";
 import mWave from "./mWave.svg";
 import slogan from "./Slogan.png";
@@ -10,6 +14,13 @@ import card_asset_3 from "./custom.svg";
 import card_asset_4 from "./content.svg";
 import card_asset_5 from "./graphics.svg";
 import card_asset_6 from "./app.svg";
+
+import process_asset_1 from "./process_asset_1.svg";
+import process_asset_2 from "./process_asset_2.svg";
+import process_asset_3 from "./process_asset_3.svg";
+import process_asset_4 from "./process_asset_4.svg";
+import process_asset_5 from "./process_asset_5.svg";
+import process_asset_6 from "./process_asset_6.svg";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import { Button } from "@material-ui/core";
@@ -143,35 +154,40 @@ function App() {
       >
         {cFromState ? (
           <>
-            <div className="contactUsHeader">
-              <h1>Grape Studio Enterprise</h1>
+            <div>
+              <img src={logo} alt="logo" className="contactLogo" />
               <Button
                 onClick={() => {
                   setcFrom(false);
                 }}
+                className="contactClose"
               >
                 <CancelIcon />
               </Button>
+              <img src={contactUs} alt="contactUs" className="contactAsset" />
+              <div>
+                <h1>Welcome To,</h1>
+                <h1>Grape Studio Enterprise</h1>
+              </div>
             </div>
-
-            <p className="contactUsInfo">
-              Hi! Let us know how we can help and we’ll respond shortly.
-            </p>
-            <form action="/">
-              <input type="text" name="name" id="name" placeholder="Name*" />
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email*"
-              />
-              <textarea
-                name="detail"
-                id="detail"
-                placeholder="How can we help?*"
-              ></textarea>
-              <button type="submit">SEND</button>
-            </form>
+            <div>
+              <form action="/">
+                <p>How Can We Help You?</p>
+                <input type="text" name="name" id="name" placeholder="Name" />
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                />
+                <textarea
+                  name="detail"
+                  id="detail"
+                  placeholder="How can we help?*"
+                ></textarea>
+                <button type="submit">SUBMIT</button>
+              </form>
+            </div>
           </>
         ) : (
           <>
@@ -537,6 +553,54 @@ function App() {
               aliquam non molestiae numquam delectus expedita quod ratione.
               Vitae, eligendi!
             </p>
+          </div>
+        </div>
+      </section>
+      <section className="s_about">
+        <div>
+          <h1>About Us</h1>
+          <p>
+            We are the grapes studio! A team of software development, website
+            development, mobile apps development, and graphic designing
+            professionals, whose main objective is to interface individuals and
+            society by taking care of their confound issues through technology
+            by complying with our safe standards as our prime focus. Our team
+            applies its wide-ranging experience to offer a full set of services
+            from custom software development to ongoing maintenance and support
+            to achieve long-term objectives. While there are various software
+            solution companies with passable execution of arrangements for
+            documentation and other measures. Our company stratagem’s this
+            dilemma by offering full documentation with secure code and design
+            configuration measures. Catering to your requirements is at the
+            heart of what we do.
+          </p>
+        </div>
+        <div>
+          <img src={asset_two} alt="" />
+        </div>
+      </section>
+      <section className="s_process">
+        <div>
+          <h1>Process Model</h1>
+        </div>
+        <div>
+          <div class="ball">
+            <img src={process_asset_1} alt="" />
+          </div>
+          <div class="ball">
+            <img src={process_asset_2} alt="" />
+          </div>
+          <div class="ball">
+            <img src={process_asset_3} alt="" />
+          </div>
+          <div class="ball">
+            <img src={process_asset_4} alt="" />
+          </div>
+          <div class="ball">
+            <img src={process_asset_5} alt="" />
+          </div>
+          <div class="ball">
+            <img src={process_asset_6} alt="" />
           </div>
         </div>
       </section>
