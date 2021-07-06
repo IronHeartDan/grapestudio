@@ -342,7 +342,7 @@ section {
   margin-top: 10%;
   padding: 15px 25px;
   background-color: white;
-  font-weight: 900;
+  font-weight: bold;
   text-decoration: none;
   text-transform: capitalize;
   border-radius: 5px;
@@ -365,15 +365,32 @@ section {
 
 .s_offer {
   position: relative;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
   max-height: 100vh;
 }
 
-.s_offer::-webkit-scrollbar {
+.s_offer > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s_offer > div:first-of-type > h1 {
+  color: black;
+  margin: 0 auto;
+  font-size: 3.5em;
+}
+
+.s_offer > div:last-of-type {
+  overflow: auto;
+  flex: 1;
+}
+.s_offer > div:last-of-type::-webkit-scrollbar {
   display: none;
 }
 
-.s_offer > .offer_anim_card {
+.s_offer > div:last-of-type > .offer_anim_card {
   margin: 2em auto;
   position: sticky;
   top: 2em;
@@ -388,70 +405,46 @@ section {
   /* backdrop-filter: blur(10px); */
 }
 
-.s_offer > .offer_anim_card > img {
+.s_offer > div:last-of-type > .offer_anim_card > img {
   width: 50%;
   margin: -5px;
 }
 
-.s_offer > .offer_anim_card > div {
+.s_offer > div:last-of-type > .offer_anim_card > div {
   position: absolute;
   color: black;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.s_offer > .offer_anim_card > div > ul {
-  /* padding: 50px 50px 50px 0; */
+.s_offer > div:last-of-type > .offer_anim_card > div > ul > li {
+  padding: 10px;
 }
 
-.s_offer > .offer_anim_card:nth-of-type(2) {
+.s_offer > div:last-of-type > .offer_anim_card:nth-of-type(2) {
   /* top: 55%; */
   top: 3em;
 }
 
-.s_offer > .offer_anim_card:nth-of-type(3) {
+.s_offer > div:last-of-type > .offer_anim_card:nth-of-type(3) {
   /* top: 60%; */
   top: 4em;
 }
 
-.s_offer > .offer_anim_card:nth-of-type(4) {
+.s_offer > div:last-of-type > .offer_anim_card:nth-of-type(4) {
   /* top: 65%; */
   top: 5em;
 }
-.s_offer > .offer_anim_card:nth-of-type(5) {
+.s_offer > div:last-of-type > .offer_anim_card:nth-of-type(5) {
   /* top: 70%; */
   top: 6em;
 }
 
-.s_offer > .offer_anim_card:nth-of-type(6) {
+.s_offer > div:last-of-type > .offer_anim_card:nth-of-type(6) {
   /* top: 75%; */
   top: 7em;
-  margin-bottom: calc(100vh - 60vh - 7em);
+  margin-bottom: calc(100vh - 60vh - 11em);
 }
-
-/* .s_offer > .offer_anim_card:nth-of-type(7) {
-  // top: 80%; //
-  visibility: hidden;
-} */
-
-/* .s_offer > .offer_anim_card:nth-of-type(2) > h1 {
-  background: linear-gradient(90deg, lightgreen, orange);
-}
-
-.s_offer > .offer_anim_card:nth-of-type(3) > h1 {
-  background: linear-gradient(90deg, lightblue, mediumorchid);
-}
-
-.s_offer > .offer_anim_card:nth-of-type(4) > h1 {
-  background: linear-gradient(90deg, mediumorchid, moccasin);
-}
-.s_offer > .offer_anim_card:nth-of-type(5) > h1 {
-  background: linear-gradient(90deg, moccasin, rebeccapurple);
-}
-
-.s_offer > .offer_anim_card:nth-of-type(6) > h1 {
-  background-color: rebeccapurple;
-} */
 
 /* Offer Anim */
 
@@ -638,12 +631,9 @@ footer > p {
 
   /* .s_offer */
 
-  .s_offer > .offer_anim_card {
+  .s_offer > div:last-of-type > .offer_anim_card {
     margin-top: 1em;
     width: 85vw;
-  }
-  .s_offer > .offer_anim_card > h1 {
-    border-radius: 10px;
   }
 
   /* .s_offer */
@@ -700,21 +690,25 @@ footer > p {
   .s_offer {
     max-height: unset;
   }
+  .s_offer > div:first-of-type > h1 {
+    font-size: 2em;
+  }
 
-  .s_offer > .offer_anim_card {
+  .s_offer > div:last-of-type > .offer_anim_card {
     width: 95vw;
+    max-width: 350px;
     border-radius: 25px;
     max-height: 250px;
     margin: 20px auto;
     top: unset;
   }
-  .s_offer > .offer_anim_card > img {
+  .s_offer > div:last-of-type > .offer_anim_card > img {
     width: 80%;
   }
-  .s_offer > .offer_anim_card > div > ul > li {
+  .s_offer > div:last-of-type > .offer_anim_card > div > ul > li {
     display: none;
   }
-  .s_offer > .offer_anim_card:nth-of-type(6) {
+  .s_offer > div:last-of-type > .offer_anim_card:nth-of-type(6) {
     /* margin-bottom: calc(100vh - 250px - 7em); */
     margin-bottom: 20px;
   }
@@ -729,6 +723,22 @@ footer > p {
   .s_scouting > div > div > .expand {
     width: 40px;
     height: 40px;
+  }
+
+  @media only screen and (orientation: landscape) {
+    .app {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .app > div,
+    .app > section,
+    .app > footer {
+      display: none;
+    }
+    .app > h1 {
+      display: block !important;
+    }
   }
 }
 

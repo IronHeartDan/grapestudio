@@ -37,9 +37,21 @@ function App() {
     document.querySelector(".app").scrollTop = 0;
   };
 
-  useEffect(() => {
-    window.screen.orientation.lock("portrait");
-  });
+  // useEffect(() => {
+  //   document.documentElement
+  //     .requestFullscreen()
+  //     .then(() => {
+  //       window.screen.orientation
+  //         .lock("portrait")
+  //         .then(() => {
+  //           alert("Locked");
+  //         })
+  //         .catch((e) => {
+  //           alert(e);
+  //         });
+  //     })
+  //     .catch((e) => console.log(e));
+  // });
 
   // useEffect(() => {
   //   console.log("UseEffect");
@@ -119,6 +131,9 @@ function App() {
       onScroll={onScroll}
       style={{ overflow: mMenu ? "hidden" : "auto" }}
     >
+      <h1 style={{ display: "none" }} className="orientation">
+        Turn Your Device By 90 Degrees
+      </h1>
       {/* Contact us */}
       <div
         className={cFromState ? "contactUs expandContactUs" : "contactUs"}
@@ -242,113 +257,118 @@ function App() {
       {/* s_offer */}
 
       <section className="s_offer">
-        <div className="offer_anim_card" id="0">
-          <img src={card_asset_1} alt="card" />
-          <div>
-            <h1>Web/ Mobile App design</h1>
-            <ul>
-              <li>Highly proficient in web/mobile app designing.</li>
-              <li>
-                Offering interactive UI & UX designs for your Mobile
-                applications/Websites.
-              </li>
-              <li>
-                Following professional procedures while designing your
-                respective web/Mobile app.
-              </li>
-              <li>Ensuring timely delivery of orders.</li>
-              <li>Using creative tools to maximize user interactions.</li>
-              <li> Hiring professional UI/UX designers.</li>
-            </ul>
+        <div>
+          <h1>What We Do? </h1>
+        </div>
+        <div>
+          <div className="offer_anim_card" id="0">
+            <img src={card_asset_1} alt="card" />
+            <div>
+              <h1>Web/ Mobile App design</h1>
+              <ul>
+                <li>Highly proficient in web/mobile app designing.</li>
+                <li>
+                  Offering interactive UI & UX designs for your Mobile
+                  applications/Websites.
+                </li>
+                <li>
+                  Following professional procedures while designing your
+                  respective web/Mobile app.
+                </li>
+                <li>Ensuring timely delivery of orders.</li>
+                <li>Using creative tools to maximize user interactions.</li>
+                <li> Hiring professional UI/UX designers.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="offer_anim_card" id="1">
+            <img src={card_asset_2} alt="card" />
+            <div>
+              <h1>Website development</h1>
+              <ul>
+                <li> Highly proficient in website development.</li>
+                <li>
+                  Conducting innovative tactic while building static/dynamic
+                  websites.
+                </li>
+                <li>
+                  Hiring passionate and dedicated individuals to ensure smooth
+                  development.
+                </li>
+                <li>Developing dynamic/static websites from scratch.</li>
+                <li>Providing better user interactive interface.</li>
+                <li>
+                  Constructing wide sets of websites ranging from (Personal,
+                  Photo sharing, writer/author, informative, ecommerce).
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="offer_anim_card" id="2">
+            <img src={card_asset_3} alt="card" />
+            <h1>Three</h1>
+          </div>
+          <div className="offer_anim_card" id="3">
+            <img src={card_asset_4} alt="card" />
+            <h1>Four</h1>
+          </div>
+          <div className="offer_anim_card" id="4">
+            <img src={card_asset_5} alt="card" />
+            <div>
+              <h1>Graphic designing</h1>
+              <ul>
+                <li>Highly proficient in Graphic designing.</li>
+                <li>
+                  <strong>Logo designing:-</strong> ➔ A team of experienced logo
+                  designers providing services from basic and complex logo
+                  designs for small scale businesses to big enterprising
+                  corporations.
+                </li>
+                <li>
+                  <strong>Business cards designing:-</strong> ➔ Adding life to
+                  your business cards by using creative and professional
+                  designing methods while developing them.
+                </li>
+                <li>
+                  <strong>Social media posts designing:- </strong> ➔Providing
+                  interactive post designs for engaging more audiences.
+                </li>
+                <li>
+                  <strong>Business Flyer designing:-</strong> ➔ Creating your
+                  own professional business flyer designs allowing you to
+                  express the story of your case. Whether it’s for business,
+                  promoting, fundraisers etc
+                </li>
+                <li>Ensuring timely delivery of each and every design.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="offer_anim_card" id="5">
+            <img src={card_asset_6} alt="card" />
+            <div>
+              <h1>Mobile App development</h1>
+              <ul>
+                <li> Highly proficient in Android app development.</li>
+                <li>
+                  Hiring passionate and dedicated developers to produce the best
+                  results.
+                </li>
+                <li>
+                  Showcasing innovative and enthusiastic approach while building
+                  android apps
+                </li>
+                <li>
+                  Working with existing and updated technologies for secure and
+                  sturdy app development.
+                </li>
+                <li>
+                  Providing steady and satisfactory result to our clients.
+                </li>
+                <li>Delivering with exceptional punctuality.</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="offer_anim_card" id="1">
-          <img src={card_asset_2} alt="card" />
-          <div>
-            <h1>Website development</h1>
-            <ul>
-              <li> Highly proficient in website development.</li>
-              <li>
-                Conducting innovative tactic while building static/dynamic
-                websites.
-              </li>
-              <li>
-                Hiring passionate and dedicated individuals to ensure smooth
-                development.
-              </li>
-              <li>Developing dynamic/static websites from scratch.</li>
-              <li>Providing better user interactive interface.</li>
-              <li>
-                Constructing wide sets of websites ranging from (Personal, Photo
-                sharing, writer/author, informative, ecommerce).
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="offer_anim_card" id="2">
-          <img src={card_asset_3} alt="card" />
-          <h1>Three</h1>
-        </div>
-        <div className="offer_anim_card" id="3">
-          <img src={card_asset_4} alt="card" />
-          <h1>Four</h1>
-        </div>
-        <div className="offer_anim_card" id="4">
-          <img src={card_asset_5} alt="card" />
-          <div>
-            <h1>Graphic designing</h1>
-            <ul>
-              <li>Highly proficient in Graphic designing.</li>
-              <li>
-                <strong>Logo designing:-</strong> ➔ A team of experienced logo
-                designers providing services from basic and complex logo designs
-                for small scale businesses to big enterprising corporations.
-              </li>
-              <li>
-                <strong>Business cards designing:-</strong> ➔ Adding life to
-                your business cards by using creative and professional designing
-                methods while developing them.
-              </li>
-              <li>
-                <strong>Social media posts designing:- </strong> ➔Providing
-                interactive post designs for engaging more audiences.
-              </li>
-              <li>
-                <strong>Business Flyer designing:-</strong> ➔ Creating your own
-                professional business flyer designs allowing you to express the
-                story of your case. Whether it’s for business, promoting,
-                fundraisers etc
-              </li>
-              <li>Ensuring timely delivery of each and every design.</li>
-            </ul>
-          </div>
-        </div>
-        <div className="offer_anim_card" id="5">
-          <img src={card_asset_6} alt="card" />
-          <div>
-            <h1>Mobile App development</h1>
-            <ul>
-              <li> Highly proficient in Android app development.</li>
-              <li>
-                Hiring passionate and dedicated developers to produce the best
-                results.
-              </li>
-              <li>
-                Showcasing innovative and enthusiastic approach while building
-                android apps
-              </li>
-              <li>
-                Working with existing and updated technologies for secure and
-                sturdy app development.
-              </li>
-              <li>Providing steady and satisfactory result to our clients.</li>
-              <li>Delivering with exceptional punctuality.</li>
-            </ul>
-          </div>
-        </div>
-        {/* <div className="offer_anim_card" id="6">
-          <h1>Seven</h1>
-        </div> */}
       </section>
 
       {/* s_offer */}
