@@ -69,6 +69,13 @@ a {
   font-family: "Roboto", sans-serif;
 }
 
+.not_Found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .anim {
   opacity: 0;
 }

@@ -1,0 +1,26 @@
+.s_policy {
+  max-width: 100vw;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 50px;
+  font-size: medium;
+  overflow: hidden;
+}
+
+.s_policy > ul {
+  padding: 30px;
+  overflow: auto;
+  flex: 1;
+}
+.s_policy > ul > li > p {
+  text-justify: distribute-all-lines;
+}
+
+@media (max-width: 800px) {
+  .s_policy {
+    padding: unset;
+    font-size: small;
+  }
+}
