@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import asset_one from "./asset_one.svg";
 import asset_two from "./asset_two.svg";
 
+import s_offer_asset from "./s_offer_asset.jpg";
+
 import contactUs from "./contactUs.svg";
 
 import Wave from "./wave.svg";
@@ -29,12 +31,21 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import CancelIcon from "@material-ui/icons/Cancel";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 function App() {
   const [scrollTopState, setScrollTop] = useState(false);
   const [scoutState, setScoute] = useState(0);
   const [cFromState, setcFrom] = useState(false);
   const [mMenu, setmMenu] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => console.log(data);
 
   const onScroll = (e) => {
     if (e.target.scrollTop > 100) {
@@ -171,7 +182,7 @@ function App() {
               </div>
             </div>
             <div>
-              <form action="/">
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <p>How Can We Help You?</p>
                 <input type="text" name="name" id="name" placeholder="Name" />
                 <input
@@ -229,8 +240,8 @@ function App() {
             <a href="/">Home</a>
             <a href="/">Services</a>
             <a href="/">About us</a>
-            <a href="/">Carrers</a>
-            <a href="/">Sign Up</a>
+            <a href="/">Industries</a>
+            <a href="/">Careers</a>
           </nav>
           <div
             className="menu"
@@ -240,7 +251,7 @@ function App() {
               right: mMenu ? "0" : "unset",
               width: mMenu ? "100vw" : "64px",
               height: mMenu ? "100vh" : "59px",
-              backdropFilter: mMenu ? "blur(5px)" : "unset",
+              backdropFilter: mMenu ? "blur(50px)" : "unset",
               boxShadow: mMenu ? " 0 0 10px 0 black" : "unset",
             }}
           >
@@ -251,6 +262,19 @@ function App() {
             >
               {mMenu ? <CancelIcon /> : <MenuIcon />}
             </Button>
+            {mMenu ? (
+              <>
+                <nav>
+                  <a href="/">Home</a>
+                  <a href="/">Services</a>
+                  <a href="/">About us</a>
+                  <a href="/">Industries</a>
+                  <a href="/">Careers</a>
+                </nav>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </header>
         <div className="main_con">
@@ -273,6 +297,7 @@ function App() {
       {/* s_offer */}
 
       <section className="s_offer">
+        <img src={s_offer_asset} alt="s_offer_asset" />
         <div>
           <h1>What We Do? </h1>
         </div>
@@ -280,7 +305,7 @@ function App() {
           <div className="offer_anim_card" id="0">
             <img src={card_asset_1} alt="card" />
             <div>
-              <h1>Web/ Mobile App design</h1>
+              <h1>Web | Mobile App Design</h1>
               <ul>
                 <li>Highly proficient in web/mobile app designing.</li>
                 <li>
@@ -581,25 +606,25 @@ function App() {
       </section>
       <section className="s_process">
         <div>
-          <h1>Process Model</h1>
+          <h1>Our Process Model</h1>
         </div>
         <div>
-          <div class="ball">
+          <div className="ball">
             <img src={process_asset_1} alt="" />
           </div>
-          <div class="ball">
+          <div className="ball">
             <img src={process_asset_2} alt="" />
           </div>
-          <div class="ball">
+          <div className="ball">
             <img src={process_asset_3} alt="" />
           </div>
-          <div class="ball">
+          <div className="ball">
             <img src={process_asset_4} alt="" />
           </div>
-          <div class="ball">
+          <div className="ball">
             <img src={process_asset_5} alt="" />
           </div>
-          <div class="ball">
+          <div className="ball">
             <img src={process_asset_6} alt="" />
           </div>
         </div>
