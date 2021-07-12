@@ -4,11 +4,15 @@ import asset_one from "./assets/asset_one.svg";
 import asset_two from "./assets/asset_two.svg";
 
 import contactUs from "./assets/contactUs.svg";
+import asset_whatsapp from "./assets/asset_whatsapp.png";
+import asset_instagram from "./assets/asset_instagram.png";
+import asset_facebook from "./assets/asset_facebook.png";
+import asset_linkedin from "./assets/asset_linkedin.png";
 
 import slogan from "./assets/Slogan.png";
 import card_asset_1 from "./assets/web.svg";
 import card_asset_2 from "./assets/webd.svg";
-import card_asset_3 from "./assets/custom.svg";
+import card_asset_3 from "./assets/asset_appDesign.svg";
 import card_asset_4 from "./assets/content.svg";
 import card_asset_5 from "./assets/graphics.svg";
 import card_asset_6 from "./assets/app.svg";
@@ -203,12 +207,34 @@ function App() {
                     >
                       <CancelIcon />
                     </Button>
-                    <img
-                      loading="lazy"
-                      src={contactUs}
-                      alt="contactUs"
-                      className="contactAsset"
-                    />
+                    <div>
+                      <img
+                        loading="lazy"
+                        src={contactUs}
+                        alt="contactUs"
+                        className="contactAsset"
+                      />
+                      <img
+                        src={asset_whatsapp}
+                        alt="whatsapp"
+                        className="asset_whatsapp"
+                      />
+                      <img
+                        src={asset_facebook}
+                        alt="facebook"
+                        className="asset_facebook"
+                      />
+                      <img
+                        src={asset_linkedin}
+                        alt="linkedin"
+                        className="asset_linkedin"
+                      />
+                      <img
+                        src={asset_instagram}
+                        alt="instagram"
+                        className="asset_instagram"
+                      />
+                    </div>
                     <div>
                       <h1>Welcome To,</h1>
                       <h1>Grape Studio Enterprise</h1>
@@ -244,6 +270,9 @@ function App() {
                         type="email"
                         name="email"
                         id="email"
+                        onCopy={(event) => event.preventDefault()}
+                        onCut={(event) => event.preventDefault()}
+                        onPaste={(event) => event.preventDefault()}
                         placeholder="Email"
                         {...register("email", { required: true })}
                         style={{
@@ -253,7 +282,10 @@ function App() {
                       <textarea
                         name="detail"
                         id="detail"
-                        maxLength="500"
+                        maxLength="250"
+                        onCopy={(event) => event.preventDefault()}
+                        onCut={(event) => event.preventDefault()}
+                        onPaste={(event) => event.preventDefault()}
                         placeholder="How can we help?*"
                         {...register("detail", {
                           required: true,
@@ -373,29 +405,33 @@ function App() {
               </div>
               <div>
                 <div className="offer_anim_card" id="0">
-                  <img loading="lazy" src={card_asset_1} alt="card" />
+                  <img loading="lazy" src={card_asset_6} alt="card" />
                   <div>
-                    <h1>Web | Mobile App Design</h1>
+                    <h1>Mobile App development</h1>
                     <ul>
-                      <li>Highly proficient in web/mobile app designing.</li>
+                      <li>Highly proficient in Android app development.</li>
                       <li>
-                        Offering interactive UI & UX designs for your Mobile
-                        applications/Websites.
+                        Hiring passionate and dedicated developers to produce
+                        the best results.
                       </li>
                       <li>
-                        Following professional procedures while designing your
-                        respective web/Mobile app.
+                        Showcasing an innovative and enthusiastic approach while
+                        building android apps.
                       </li>
-                      <li>Ensuring timely delivery of orders.</li>
                       <li>
-                        Using creative tools to maximize user interactions.
+                        Working with existing and updated technologies for
+                        secure and sturdy app development.
                       </li>
-                      <li> Hiring professional UI/UX designers.</li>
+                      <li>
+                        Providing steady and satisfactory results to our
+                        clients.
+                      </li>
+                      <li>Delivering with exceptional punctuality.</li>
                     </ul>
                   </div>
                 </div>
                 <div className="offer_anim_card" id="1">
-                  <img loading="lazy" src={card_asset_2} alt="card" />
+                  <img loading="lazy" src={card_asset_1} alt="card" />
                   <div>
                     <h1>Website development</h1>
                     <ul>
@@ -419,12 +455,48 @@ function App() {
                   </div>
                 </div>
                 <div className="offer_anim_card" id="2">
-                  <img loading="lazy" src={card_asset_3} alt="card" />
-                  <h1>Three</h1>
+                  <img loading="lazy" src={card_asset_2} alt="card" />
+
+                  <div>
+                    <h1>Web design</h1>
+                    <ul>
+                      <li>Highly proficient in web designing.</li>
+                      <li>
+                        Offering interactive UI & UX designs for your Websites.
+                      </li>
+                      <li>
+                        Following professional procedures while designing your
+                        respective website.
+                      </li>
+                      <li>Ensuring timely delivery of orders.</li>
+                      <li>
+                        Using creative tools to maximize user interactions.
+                      </li>
+                      <li>Hiring professional UI/UX designers.</li>
+                    </ul>
+                  </div>
                 </div>
                 <div className="offer_anim_card" id="3">
-                  <img loading="lazy" src={card_asset_4} alt="card" />
-                  <h1>Four</h1>
+                  <img loading="lazy" src={card_asset_3} alt="card" />
+                  <div>
+                    <h1>Mobile App design</h1>
+                    <ul>
+                      <li>Highly proficient in mobile app designing.</li>
+                      <li>
+                        Offering interactive UI & UX designs for your Mobile
+                        applications.
+                      </li>
+                      <li>
+                        Following professional procedures while designing your
+                        respective Mobile app.
+                      </li>
+                      <li>Ensuring timely delivery of orders.</li>
+                      <li>
+                        Using creative tools to maximize user interactions.
+                      </li>
+                      <li>Hiring professional UI/UX designers.</li>
+                    </ul>
+                  </div>
                 </div>
                 <div className="offer_anim_card" id="4">
                   <img loading="lazy" src={card_asset_5} alt="card" />
@@ -433,55 +505,34 @@ function App() {
                     <ul>
                       <li>Highly proficient in Graphic designing.</li>
                       <li>
-                        <strong>Logo designing:-</strong> ➔ A team of
-                        experienced logo designers providing services from basic
-                        and complex logo designs for small scale businesses to
-                        big enterprising corporations.
+                        Our company offers a variety of services in graphic
+                        designing that are listed below.
                       </li>
-                      <li>
-                        <strong>Business cards designing:-</strong> ➔ Adding
-                        life to your business cards by using creative and
-                        professional designing methods while developing them.
-                      </li>
-                      <li>
-                        <strong>Social media posts designing:- </strong>{" "}
-                        ➔Providing interactive post designs for engaging more
-                        audiences.
-                      </li>
-                      <li>
-                        <strong>Business Flyer designing:-</strong> ➔ Creating
-                        your own professional business flyer designs allowing
-                        you to express the story of your case. Whether it’s for
-                        business, promoting, fundraisers etc
-                      </li>
+                      <li>Logo|Social media posts designing.</li>
+                      <li>Business cards|Flyer designing.</li>
                       <li>
                         Ensuring timely delivery of each and every design.
                       </li>
+                      <li>More preferable to have UI|UX knowledge.</li>
                     </ul>
                   </div>
                 </div>
                 <div className="offer_anim_card" id="5">
-                  <img loading="lazy" src={card_asset_6} alt="card" />
+                  <img loading="lazy" src={card_asset_4} alt="card" />
                   <div>
-                    <h1>Mobile App development</h1>
+                    <h1> Content Writing</h1>
                     <ul>
-                      <li> Highly proficient in Android app development.</li>
+                      <li>Maintaining consistent quality of work.</li>
                       <li>
-                        Hiring passionate and dedicated developers to produce
-                        the best results.
+                        Our writers have qualifications in the fields they write
+                        about and are trained experts.
                       </li>
+                      <li>Adept in meeting your strict deadlines.</li>
+                      <li>Always available for ongoing communication. </li>
                       <li>
-                        Showcasing innovative and enthusiastic approach while
-                        building android apps
+                        Delivering engaging content as per customer’s request.{" "}
                       </li>
-                      <li>
-                        Working with existing and updated technologies for
-                        secure and sturdy app development.
-                      </li>
-                      <li>
-                        Providing steady and satisfactory result to our clients.
-                      </li>
-                      <li>Delivering with exceptional punctuality.</li>
+                      <li>Open for customer’s feedback.</li>
                     </ul>
                   </div>
                 </div>
@@ -494,7 +545,7 @@ function App() {
               <h1>What We Are Scouting For?</h1>
               <div>
                 <div style={{ height: scoutState === 1 ? "150px" : "0" }}>
-                  <h1>One</h1>
+                  <h1>Flutter</h1>
                   <div
                     className="expand"
                     style={{
@@ -512,18 +563,37 @@ function App() {
                       <ExpandMoreIcon />
                     </Button>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aspernatur magni soluta, quis, impedit accusantium, sapiente
-                    ipsam similique delectus doloribus expedita vel quia ullam
-                    at tempora! Minima sequi, tenetur dignissimos exercitationem
-                    eius odit alias eligendi magni repellendus eaque
-                    voluptatibus voluptatem officiis aliquam non molestiae
-                    numquam delectus expedita quod ratione. Vitae, eligendi!
-                  </p>
+                  <div className="s_scoutingDetails">
+                    <h1>Job Description :</h1>
+                    <p>
+                      We at GSE are hiring a unique developer position that will
+                      allow you to not only expand your capabilities, but also
+                      build equity in a unique adventure startup.
+                    </p>
+                    <h1>Your responsibilities will include : </h1>
+                    <ul>
+                      <li>Maintain existing codebases.</li>
+                      <li>
+                        Design and implement new app modules based on the
+                        product requirements using Flutter framework.
+                      </li>
+                      <li>
+                        Should build reusable code and libraries for future use.
+                      </li>
+                      <li>
+                        Debug existing apps components, fix issues and avoid
+                        regressions.
+                      </li>
+                      <li>
+                        Optimize application for maximum speed and scalability.
+                      </li>
+                      <li>Follow the company guidelines and best practices.</li>
+                    </ul>
+                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                  </div>
                 </div>
                 <div style={{ height: scoutState === 2 ? "150px" : "0" }}>
-                  <h1>Two</h1>
+                  <h1>Website</h1>
                   <div
                     className="expand"
                     style={{
@@ -541,18 +611,47 @@ function App() {
                       <ExpandMoreIcon />
                     </Button>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aspernatur magni soluta, quis, impedit accusantium, sapiente
-                    ipsam similique delectus doloribus expedita vel quia ullam
-                    at tempora! Minima sequi, tenetur dignissimos exercitationem
-                    eius odit alias eligendi magni repellendus eaque
-                    voluptatibus voluptatem officiis aliquam non molestiae
-                    numquam delectus expedita quod ratione. Vitae, eligendi!
-                  </p>
+                  <div className="s_scoutingDetails">
+                    <h1>Job Description : </h1>
+                    <p>
+                      We at GSE are looking for a skilled web developer who will
+                      be responsible for developing and/or designing websites
+                      for our company. You will be working alongside a team of
+                      other developers in creating, maintaining, and updating
+                      our websites.
+                    </p>
+                    <h1>Your responsibilities will include :</h1>
+                    <ul>
+                      <li>
+                        Should know HTML, CSS, JavaScript, PHP and other
+                        relevant web design coding languages.
+                      </li>
+                      <li>
+                        Experience with database systems such as SQL or NoSQL.
+                      </li>
+                      <li>
+                        Must implement contingency plans in case the website
+                        goes down.
+                      </li>
+                      <li>
+                        Should focus on maintaining and expanding/enhancing the
+                        website once built.
+                      </li>
+                      <li>
+                        Engage with other members of their team to ascertain the
+                        kind of information the site should contain.
+                      </li>
+                      <li>
+                        Should be responsible for carrying out quality test and
+                        troubleshoot the website and/or its applications in
+                        various browsers.
+                      </li>
+                    </ul>
+                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                  </div>
                 </div>
                 <div style={{ height: scoutState === 3 ? "150px" : "0" }}>
-                  <h1>Three</h1>
+                  <h1>Graphic Designer</h1>
                   <div
                     className="expand"
                     style={{
@@ -570,18 +669,33 @@ function App() {
                       <ExpandMoreIcon />
                     </Button>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aspernatur magni soluta, quis, impedit accusantium, sapiente
-                    ipsam similique delectus doloribus expedita vel quia ullam
-                    at tempora! Minima sequi, tenetur dignissimos exercitationem
-                    eius odit alias eligendi magni repellendus eaque
-                    voluptatibus voluptatem officiis aliquam non molestiae
-                    numquam delectus expedita quod ratione. Vitae, eligendi!
-                  </p>
+                  <div className="s_scoutingDetails">
+                    <h1>Job Description:</h1>
+                    <p>
+                      We are looking for a highly talented, driven and flexible
+                      graphic designer with a proven record of delivering
+                      creative and innovative design solutions.
+                    </p>
+                    <h1>Your responsibilities will include</h1>
+                    <ul>
+                      <li>
+                        Responsible for creating exciting materials as well as
+                        design solutions that have high visual impact.
+                      </li>
+                      <li>
+                        Creating edgy and fashionable designs overseeing the
+                        visual expression of a client’s brand.
+                      </li>
+                      <li>
+                        Should manage design projects from brief to the end.
+                      </li>
+                      <li>Should be proficient in UI/UX design.</li>
+                    </ul>
+                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                  </div>
                 </div>
                 <div style={{ height: scoutState === 4 ? "150px" : "0" }}>
-                  <h1>Four</h1>
+                  <h1>React Native</h1>
                   <div
                     className="expand"
                     style={{
@@ -599,18 +713,38 @@ function App() {
                       <ExpandMoreIcon />
                     </Button>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aspernatur magni soluta, quis, impedit accusantium, sapiente
-                    ipsam similique delectus doloribus expedita vel quia ullam
-                    at tempora! Minima sequi, tenetur dignissimos exercitationem
-                    eius odit alias eligendi magni repellendus eaque
-                    voluptatibus voluptatem officiis aliquam non molestiae
-                    numquam delectus expedita quod ratione. Vitae, eligendi!
-                  </p>
+                  <div className="s_scoutingDetails">
+                    <h1>Job Description : </h1>
+                    <p>
+                      We at GSE are looking for a React Native developer
+                      interested in building performant mobile apps on both the
+                      iOS and Android platforms.
+                    </p>
+                    <h1>Your responsibilities will include : </h1>
+                    <ul>
+                      <li>
+                        Should diagnose, fix bugs and performance bottlenecks
+                        for performance that feels native.
+                      </li>
+                      <li>
+                        Build pixel-perfect, buttery smooth UIs across both
+                        mobile platforms.
+                      </li>
+                      <li>
+                        Must leverage native APIs for deep integrations with
+                        both platforms.
+                      </li>
+                      <li>
+                        Maintain code and write automated tests to ensure the
+                        product is of the highest quality.
+                      </li>
+                      <li>Follow the company guidelines and best practices.</li>
+                    </ul>
+                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                  </div>
                 </div>
                 <div style={{ height: scoutState === 5 ? "150px" : "0" }}>
-                  <h1>Five</h1>
+                  <h1>Backend developer</h1>
                   <div
                     className="expand"
                     style={{
@@ -628,18 +762,31 @@ function App() {
                       <ExpandMoreIcon />
                     </Button>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aspernatur magni soluta, quis, impedit accusantium, sapiente
-                    ipsam similique delectus doloribus expedita vel quia ullam
-                    at tempora! Minima sequi, tenetur dignissimos exercitationem
-                    eius odit alias eligendi magni repellendus eaque
-                    voluptatibus voluptatem officiis aliquam non molestiae
-                    numquam delectus expedita quod ratione. Vitae, eligendi!
-                  </p>
+                  <div className="s_scoutingDetails">
+                    <h1>Job Description:</h1>
+                    <p>
+                      We are looking for backend developers that are responsible
+                      for creating and maintaining technology at the back end of
+                      a website.
+                    </p>
+                    <h1>Your responsibilities will include:-</h1>
+                    <ul>
+                      <li>Writing high-quality codes.</li>
+                      <li>Building and maintaining web applications.</li>
+                      <li>
+                        Assessing the efficiency and speed of current
+                        applications.
+                      </li>
+                      <li>Must be proficient in Firebase or MySQL, MongoDB.</li>
+                      <li>
+                        Should be adept focus on troubleshooting and debugging.
+                      </li>
+                    </ul>
+                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                  </div>
                 </div>
                 <div style={{ height: scoutState === 6 ? "150px" : "0" }}>
-                  <h1>Six</h1>
+                  <h1>Business Development Executive</h1>
                   <div
                     className="expand"
                     style={{
@@ -657,36 +804,52 @@ function App() {
                       <ExpandMoreIcon />
                     </Button>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aspernatur magni soluta, quis, impedit accusantium, sapiente
-                    ipsam similique delectus doloribus expedita vel quia ullam
-                    at tempora! Minima sequi, tenetur dignissimos exercitationem
-                    eius odit alias eligendi magni repellendus eaque
-                    voluptatibus voluptatem officiis aliquam non molestiae
-                    numquam delectus expedita quod ratione. Vitae, eligendi!
-                  </p>
+                  <div className="s_scoutingDetails">
+                    <h1>Job Description :</h1>
+                    <p>
+                      We at GSE are looking for a Business development executive
+                      who will be concerned with improving and growing our
+                      business, by establishing and developing relationships
+                      with customers, suppliers and other partners.
+                    </p>
+                    <h1>Your responsibilities will include :</h1>
+                    <ul>
+                      <li>
+                        Must seek out the appropriate contact in an
+                        organisation.
+                      </li>
+                      <li>
+                        Meet with customers/clients face to face or over the
+                        phone.
+                      </li>
+                      <li>
+                        Understand the needs of our customers and be able to
+                        respond effectively with a plan of how to fulfil them.
+                      </li>
+                      <li>
+                        Should have a good understanding of the business
+                        services and be able to advise others about them.
+                      </li>
+                      <li>
+                        Should have a good understanding of the business
+                        services and be able to advise others about them.
+                      </li>
+                      <li>Follow the company guidelines and best practices.</li>
+                    </ul>
+                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                  </div>
                 </div>
               </div>
             </section>
             <section className="s_about">
               <div>
-                <h1>About Us</h1>
+                <h1>What We Are About</h1>
                 <p>
-                  We are the grapes studio! A team of software development,
-                  website development, mobile apps development, and graphic
-                  designing professionals, whose main objective is to interface
-                  individuals and society by taking care of their confound
-                  issues through technology by complying with our safe standards
-                  as our prime focus. Our team applies its wide-ranging
-                  experience to offer a full set of services from custom
-                  software development to ongoing maintenance and support to
-                  achieve long-term objectives. While there are various software
-                  solution companies with passable execution of arrangements for
-                  documentation and other measures. Our company stratagem’s this
-                  dilemma by offering full documentation with secure code and
-                  design configuration measures. Catering to your requirements
-                  is at the heart of what we do.
+                  We are A team of professionals, whose main objective is to
+                  interface with individuals by taking care of their confounded
+                  issues through technology by remembering our safety standards
+                  as a prime focus. Catering to your requirements is at the
+                  heart of what we do.
                 </p>
               </div>
               <div>
@@ -696,7 +859,7 @@ function App() {
             <section className="s_industries">
               <div>
                 <h1>Industries</h1>
-                <h1>we work with:-</h1>
+                <h1>we work with : </h1>
                 <ul>
                   <li>Public Sector</li>
                   <li>Private Sector</li>

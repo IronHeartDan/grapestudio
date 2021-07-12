@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px 50px;
-  font-size: medium;
+  font-size: small;
   overflow: hidden;
 }
 
@@ -21,6 +21,5 @@
 @media (max-width: 800px) {
   .s_policy {
     padding: unset;
-    font-size: small;
   }
 }

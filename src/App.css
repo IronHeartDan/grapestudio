@@ -46,9 +46,9 @@
   }
 }
 
-@keyframes asset {
+@keyframes float {
   from {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
   to {
     transform: translateY(0px);
@@ -137,6 +137,7 @@ a {
   top: 0;
   color: white;
   padding: 10px;
+  z-index: 1;
 }
 
 .expandContactUs > div {
@@ -152,9 +153,48 @@ a {
   flex-direction: column;
 }
 
-.expandContactUs > div:first-of-type .contactAsset {
+.expandContactUs > div:first-of-type > div {
+  position: relative;
+}
+.expandContactUs > div:first-of-type > div > img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  animation: float 1s 0s infinite alternate-reverse ease-in-out;
+  z-index: 0;
+  user-select: none;
+}
+.expandContactUs > div:first-of-type > div .contactAsset {
+  position: relative;
   width: 50%;
+  height: auto;
   margin-top: 20px;
+  animation: unset;
+}
+
+.expandContactUs > div:first-of-type > div .asset_whatsapp {
+  top: 25%;
+  left: 20%;
+  width: 45px;
+  height: 45px;
+}
+.expandContactUs > div:first-of-type > div .asset_facebook {
+  top: 25%;
+  right: 25%;
+  width: 40px;
+  height: 40px;
+}
+.expandContactUs > div:first-of-type > div .asset_linkedin {
+  left: 25%;
+  bottom: 20%;
+  width: 25px;
+  height: 25px;
+}
+.expandContactUs > div:first-of-type > div .asset_instagram {
+  right: 25%;
+  bottom: 25%;
+  width: 35px;
+  height: 35px;
 }
 
 .expandContactUs > div:first-of-type > div {
@@ -367,6 +407,7 @@ section {
 }
 
 .s_main > .main_con > div:first-of-type > img {
+  animation: float 1s 0s infinite alternate-reverse ease-in-out;
   margin-top: -100px;
   max-height: 450px;
 }
@@ -385,6 +426,10 @@ section {
   border-radius: 5px;
   color: #272c6b;
   transition: all ease 0.2s;
+}
+.s_main > .main_con > div:last-of-type > .main_btn:hover {
+  background-color: #272c6b;
+  color: white;
 }
 
 /* s_main */
@@ -509,7 +554,7 @@ section {
   justify-content: space-around;
 }
 .s_scouting > div > div {
-  border-top: 5px solid white;
+  border-top: 2px solid white;
   width: 100%;
   transition: all ease 0.5s;
   overflow: auto;
@@ -546,6 +591,14 @@ section {
 .s_scouting > div > div > .expand > button {
   color: white;
   padding: 15px;
+}
+
+.s_scouting > div > div > .s_scoutingDetails {
+  padding-top: 10px;
+}
+
+.s_scouting > div > div > .s_scoutingDetails > ul {
+  padding-left: 50px;
 }
 
 /* .s_offer */
@@ -1024,6 +1077,19 @@ footer > p {
     width: 40px;
     height: 40px;
   }
+
+  .s_scouting > div > div > h1 {
+    font-size: small;
+  }
+
+  .s_scouting > div > div > .s_scoutingDetails > ul {
+    padding-left: 20px;
+  }
+  .s_scouting > div > div > .s_scoutingDetails > h1 {
+    font-size: 1em;
+  }
+
+  /* .s_scouting End*/
 
   /* s_about */
   .s_about > div {
