@@ -1,28 +1,26 @@
 import "./App.css";
-import logo from "./logo.svg";
-import asset_one from "./asset_one.svg";
-import asset_two from "./asset_two.svg";
+import logo from "./assets/logo.svg";
+import asset_one from "./assets/asset_one.svg";
+import asset_two from "./assets/asset_two.svg";
 
-import s_offer_asset from "./s_offer_asset.jpg";
+import contactUs from "./assets/contactUs.svg";
 
-import contactUs from "./contactUs.svg";
+import slogan from "./assets/Slogan.png";
+import card_asset_1 from "./assets/web.svg";
+import card_asset_2 from "./assets/webd.svg";
+import card_asset_3 from "./assets/custom.svg";
+import card_asset_4 from "./assets/content.svg";
+import card_asset_5 from "./assets/graphics.svg";
+import card_asset_6 from "./assets/app.svg";
 
-import Wave from "./wave.svg";
-import mWave from "./mWave.svg";
-import slogan from "./Slogan.png";
-import card_asset_1 from "./web.svg";
-import card_asset_2 from "./webd.svg";
-import card_asset_3 from "./custom.svg";
-import card_asset_4 from "./content.svg";
-import card_asset_5 from "./graphics.svg";
-import card_asset_6 from "./app.svg";
+import process_asset_1 from "./assets/process_asset_1.svg";
+import process_asset_2 from "./assets/process_asset_2.svg";
+import process_asset_3 from "./assets/process_asset_3.svg";
+import process_asset_4 from "./assets/process_asset_4.svg";
+import process_asset_5 from "./assets/process_asset_5.svg";
+import process_asset_6 from "./assets/process_asset_6.svg";
 
-import process_asset_1 from "./process_asset_1.svg";
-import process_asset_2 from "./process_asset_2.svg";
-import process_asset_3 from "./process_asset_3.svg";
-import process_asset_4 from "./process_asset_4.svg";
-import process_asset_5 from "./process_asset_5.svg";
-import process_asset_6 from "./process_asset_6.svg";
+import industries_asset_2 from "./assets/industries_asset_2.svg";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import { Button } from "@material-ui/core";
@@ -67,6 +65,20 @@ function App() {
   const scrollToTop = () => {
     document.querySelector(".app").scrollTop = 0;
   };
+
+  useEffect(() => {
+    document
+      .querySelector(":root")
+      .style.setProperty("--vh", window.innerHeight / 100 + "px");
+    document
+      .querySelector(":root")
+      .style.setProperty("--fvh", window.innerHeight / 100 + "px");
+    window.addEventListener("resize", () => {
+      document
+        .querySelector(":root")
+        .style.setProperty("--vh", window.innerHeight / 100 + "px");
+    });
+  }, []);
 
   // useEffect(() => {
   //   document.documentElement
@@ -172,15 +184,17 @@ function App() {
             <div
               className={cFromState ? "contactUs expandContactUs" : "contactUs"}
               style={{
-                transform: scrollTopState
-                  ? "translateY(-70px)"
-                  : "translateY(0px)",
+                transform:
+                  scrollTopState && cFromState
+                    ? "translateY(0px)"
+                    : scrollTopState
+                    ? "translateY(-70px)"
+                    : "translateY(0px)",
               }}
             >
               {cFromState ? (
                 <>
                   <div>
-                    <img src={logo} alt="logo" className="contactLogo" />
                     <Button
                       onClick={() => {
                         setcFrom(false);
@@ -190,6 +204,7 @@ function App() {
                       <CancelIcon />
                     </Button>
                     <img
+                      loading="lazy"
                       src={contactUs}
                       alt="contactUs"
                       className="contactAsset"
@@ -200,24 +215,53 @@ function App() {
                     </div>
                   </div>
                   <div>
+                    <p>How Can We Help You?</p>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                      <p>How Can We Help You?</p>
                       <input
                         type="text"
                         name="name"
                         id="name"
+                        onCopy={(event) => event.preventDefault()}
+                        onCut={(event) => event.preventDefault()}
+                        onPaste={(event) => event.preventDefault()}
+                        onKeyDown={(event) =>
+                          event.keyCode === 8 ||
+                          event.keyCode === 32 ||
+                          (event.keyCode >= 65 && event.keyCode <= 122)
+                            ? ""
+                            : event.preventDefault()
+                        }
                         placeholder="Name"
+                        {...register("name", {
+                          required: true,
+                          type: "email",
+                        })}
+                        style={{
+                          boxShadow: errors.name ? "0 0 2px 2px red" : "none",
+                        }}
                       />
                       <input
                         type="email"
                         name="email"
                         id="email"
                         placeholder="Email"
+                        {...register("email", { required: true })}
+                        style={{
+                          boxShadow: errors.email ? "0 0 2px 2px red" : "none",
+                        }}
                       />
                       <textarea
                         name="detail"
                         id="detail"
+                        maxLength="500"
                         placeholder="How can we help?*"
+                        {...register("detail", {
+                          required: true,
+                          maxLength: "500",
+                        })}
+                        style={{
+                          boxShadow: errors.detail ? "0 0 2px 2px red" : "none",
+                        }}
                       ></textarea>
                       <button type="submit">SUBMIT</button>
                     </form>
@@ -258,7 +302,10 @@ function App() {
 
             <section className="s_main">
               <header>
-                <img src={logo} alt="logo" />
+                <Link to="/">
+                  <img loading="lazy" src={logo} alt="logo" />
+                </Link>
+
                 <nav>
                   <a href="/">Home</a>
                   <a href="/">Services</a>
@@ -273,8 +320,9 @@ function App() {
                     top: mMenu ? "0" : "unset",
                     right: mMenu ? "0" : "unset",
                     width: mMenu ? "100vw" : "64px",
-                    height: mMenu ? "100vh" : "59px",
+                    height: mMenu ? "calc(100 * var(--vh))" : "59px",
                     backdropFilter: mMenu ? "blur(50px)" : "unset",
+                    WebkitBackdropFilter: mMenu ? "blur(50px)" : "unset",
                     boxShadow: mMenu ? " 0 0 10px 0 black" : "unset",
                   }}
                 >
@@ -302,17 +350,17 @@ function App() {
               </header>
               <div className="main_con">
                 <div>
-                  <img src={asset_one} alt="asset_one" />
+                  <img loading="lazy" src={asset_one} alt="asset_one" />
                 </div>
                 <div>
-                  <img src={slogan} alt="slogan" />
+                  <img loading="lazy" src={slogan} alt="slogan" />
                   <a href="/" className="main_btn">
                     Get Started
                   </a>
                 </div>
               </div>
-              <img src={Wave} alt="Wave" className="Wave" />
-              <img src={mWave} alt="mWave" className="mWave" />
+              {/* <img loading="lazy" src={Wave} alt="Wave" className="Wave" />
+              <img loading="lazy" src={mWave} alt="mWave" className="mWave" /> */}
             </section>
 
             {/* main */}
@@ -320,13 +368,12 @@ function App() {
             {/* s_offer */}
 
             <section className="s_offer">
-              <img src={s_offer_asset} alt="s_offer_asset" />
               <div>
                 <h1>What We Do? </h1>
               </div>
               <div>
                 <div className="offer_anim_card" id="0">
-                  <img src={card_asset_1} alt="card" />
+                  <img loading="lazy" src={card_asset_1} alt="card" />
                   <div>
                     <h1>Web | Mobile App Design</h1>
                     <ul>
@@ -348,7 +395,7 @@ function App() {
                   </div>
                 </div>
                 <div className="offer_anim_card" id="1">
-                  <img src={card_asset_2} alt="card" />
+                  <img loading="lazy" src={card_asset_2} alt="card" />
                   <div>
                     <h1>Website development</h1>
                     <ul>
@@ -372,15 +419,15 @@ function App() {
                   </div>
                 </div>
                 <div className="offer_anim_card" id="2">
-                  <img src={card_asset_3} alt="card" />
+                  <img loading="lazy" src={card_asset_3} alt="card" />
                   <h1>Three</h1>
                 </div>
                 <div className="offer_anim_card" id="3">
-                  <img src={card_asset_4} alt="card" />
+                  <img loading="lazy" src={card_asset_4} alt="card" />
                   <h1>Four</h1>
                 </div>
                 <div className="offer_anim_card" id="4">
-                  <img src={card_asset_5} alt="card" />
+                  <img loading="lazy" src={card_asset_5} alt="card" />
                   <div>
                     <h1>Graphic designing</h1>
                     <ul>
@@ -414,7 +461,7 @@ function App() {
                   </div>
                 </div>
                 <div className="offer_anim_card" id="5">
-                  <img src={card_asset_6} alt="card" />
+                  <img loading="lazy" src={card_asset_6} alt="card" />
                   <div>
                     <h1>Mobile App development</h1>
                     <ul>
@@ -643,7 +690,21 @@ function App() {
                 </p>
               </div>
               <div>
-                <img src={asset_two} alt="" />
+                <img loading="lazy" src={asset_two} alt="" />
+              </div>
+            </section>
+            <section className="s_industries">
+              <div>
+                <h1>Industries</h1>
+                <h1>we work with:-</h1>
+                <ul>
+                  <li>Public Sector</li>
+                  <li>Private Sector</li>
+                  <li>Corporate Sector</li>
+                </ul>
+              </div>
+              <div>
+                <img src={industries_asset_2} alt="industries_asset_2" />
               </div>
             </section>
             <section className="s_process">
@@ -652,22 +713,22 @@ function App() {
               </div>
               <div>
                 <div className="ball">
-                  <img src={process_asset_1} alt="" />
+                  <img loading="lazy" src={process_asset_1} alt="" />
                 </div>
                 <div className="ball">
-                  <img src={process_asset_2} alt="" />
+                  <img loading="lazy" src={process_asset_2} alt="" />
                 </div>
                 <div className="ball">
-                  <img src={process_asset_3} alt="" />
+                  <img loading="lazy" src={process_asset_3} alt="" />
                 </div>
                 <div className="ball">
-                  <img src={process_asset_4} alt="" />
+                  <img loading="lazy" src={process_asset_4} alt="" />
                 </div>
                 <div className="ball">
-                  <img src={process_asset_5} alt="" />
+                  <img loading="lazy" src={process_asset_5} alt="" />
                 </div>
                 <div className="ball">
-                  <img src={process_asset_6} alt="" />
+                  <img loading="lazy" src={process_asset_6} alt="" />
                 </div>
               </div>
             </section>

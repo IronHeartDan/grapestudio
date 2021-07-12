@@ -15,7 +15,7 @@
   flex: 1;
 }
 .s_policy > ul > li > p {
-  text-justify: distribute-all-lines;
+  text-align: justify;
 }
 
 @media (max-width: 800px) {

@@ -4,7 +4,7 @@ import "./Policy.css";
 function TermsAndCondition() {
   return (
     <div className="s_policy">
-      <h1>Terms Conditions</h1>
+      <h1>Terms And Conditions</h1>
       <ul>
         <li>
           <h1>Introduction</h1>
