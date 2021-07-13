@@ -24,7 +24,14 @@ import process_asset_4 from "./assets/process_asset_4.svg";
 import process_asset_5 from "./assets/process_asset_5.svg";
 import process_asset_6 from "./assets/process_asset_6.svg";
 
-import industries_asset_2 from "./assets/industries_asset_2.svg";
+import industries_asset from "./assets/industries_asset_2.svg";
+import industriesTwo_asset_1 from "./assets/industriesTwo_asset_1.svg";
+import industriesTwo_asset_2 from "./assets/industriesTwo_asset_2.svg";
+import industriesTwo_asset_3 from "./assets/industriesTwo_asset_3.svg";
+import industriesTwo_asset_4 from "./assets/industriesTwo_asset_4.svg";
+import industriesTwo_asset_5 from "./assets/industriesTwo_asset_5.svg";
+import industriesTwo_asset_6 from "./assets/industriesTwo_asset_6.svg";
+import industriesTwo_asset_7 from "./assets/industriesTwo_asset_7.svg";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import { Button } from "@material-ui/core";
@@ -68,6 +75,35 @@ function App() {
 
   const scrollToTop = () => {
     document.querySelector(".app").scrollTop = 0;
+  };
+
+  const validateNum = (event) => {
+    alert(event.key !== "Unidentified");
+    alert(event.key !== undefined);
+    if (event.key !== "Unidentified" && event.key !== undefined) {
+      alert("Key : " + event.key);
+      if (
+        !event.key === "Backspace" ||
+        !event.key === "Enter" ||
+        !event.key.match(/[a-z|A-Z]/)
+      ) {
+        event.preventDefault();
+      }
+    } else if (
+      event.keyCode !== "Unidentified" &&
+      event.keyCode !== undefined
+    ) {
+      alert("KeyCode : " + event.keyCode);
+      if (
+        !event.keyCode === 8 ||
+        !event.keyCode === 32 ||
+        (!event.keyCode >= 65 && event.keyCode <= 122)
+      ) {
+        event.preventDefault();
+      }
+    } else {
+      alert("Doesn't Support Your Browser!");
+    }
   };
 
   useEffect(() => {
@@ -242,7 +278,7 @@ function App() {
                   </div>
                   <div>
                     <p>How Can We Help You?</p>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
                       <input
                         type="text"
                         name="name"
@@ -250,13 +286,6 @@ function App() {
                         onCopy={(event) => event.preventDefault()}
                         onCut={(event) => event.preventDefault()}
                         onPaste={(event) => event.preventDefault()}
-                        onKeyDown={(event) =>
-                          event.keyCode === 8 ||
-                          event.keyCode === 32 ||
-                          (event.keyCode >= 65 && event.keyCode <= 122)
-                            ? ""
-                            : event.preventDefault()
-                        }
                         placeholder="Name"
                         {...register("name", {
                           required: true,
@@ -856,7 +885,7 @@ function App() {
                 <img loading="lazy" src={asset_two} alt="" />
               </div>
             </section>
-            <section className="s_industries">
+            <section className="s_industries_partOne">
               <div>
                 <h1>Industries</h1>
                 <h1>we work with : </h1>
@@ -867,7 +896,50 @@ function App() {
                 </ul>
               </div>
               <div>
-                <img src={industries_asset_2} alt="industries_asset_2" />
+                <img src={industries_asset} alt="industries_asset_2" />
+              </div>
+            </section>
+            <section className="s_industries_partTwo">
+              <div>
+                <h1>CAPABILITES</h1>
+                <div>
+                  <div>
+                    <img src={industriesTwo_asset_1} alt="" />
+                    <p>
+                      Trendy And Creative Designs For Better User Experience
+                    </p>
+                  </div>
+                  <div>
+                    <img src={industriesTwo_asset_2} alt="" />
+                    <p>Delivering Updated And Engaging Quality Content</p>
+                  </div>
+                  <div>
+                    <img src={industriesTwo_asset_3} alt="" />
+                    <p>
+                      Practicing Security And Safety Of The Product Before
+                      Delivery
+                    </p>
+                  </div>
+                  <div>
+                    <img src={industriesTwo_asset_4} alt="" />
+                    <p>
+                      Providing Intuitive Navigation While Accessing Our
+                      Websites
+                    </p>
+                  </div>
+                  <div>
+                    <img src={industriesTwo_asset_5} alt="" />
+                    <p>24x7 Service Providence And Customer Support</p>
+                  </div>
+                  <div>
+                    <img src={industriesTwo_asset_6} alt="" />
+                    <p>Satisfied Clients All Over The Globe.</p>
+                  </div>
+                  <div>
+                    <img src={industriesTwo_asset_7} alt="" />
+                    <p>Considerate Of Client’s Feedbacks</p>
+                  </div>
+                </div>
               </div>
             </section>
             <section className="s_process">
