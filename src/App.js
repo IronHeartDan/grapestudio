@@ -56,6 +56,44 @@ function App() {
   const [scoutState, setScoute] = useState(0);
   const [cFromState, setcFrom] = useState(false);
   const [mMenu, setmMenu] = useState(false);
+  const [mModal, setmModal] = useState(0);
+
+  switch (mModal) {
+    case 1:
+      var modal_content = document.getElementById("modal_content");
+      var content = document.getElementById("cardContent_1");
+      modal_content.innerHTML = content.innerHTML;
+      break;
+    case 2:
+      var modal_content = document.getElementById("modal_content");
+      var content = document.getElementById("cardContent_2");
+      modal_content.innerHTML = content.innerHTML;
+      break;
+    case 3:
+      var modal_content = document.getElementById("modal_content");
+      var content = document.getElementById("cardContent_3");
+      modal_content.innerHTML = content.innerHTML;
+      break;
+    case 4:
+      var modal_content = document.getElementById("modal_content");
+      var content = document.getElementById("cardContent_4");
+      modal_content.innerHTML = content.innerHTML;
+      break;
+    case 5:
+      var modal_content = document.getElementById("modal_content");
+      var content = document.getElementById("cardContent_5");
+      modal_content.innerHTML = content.innerHTML;
+      break;
+    case 6:
+      var modal_content = document.getElementById("modal_content");
+      var content = document.getElementById("cardContent_6");
+      modal_content.innerHTML = content.innerHTML;
+      break;
+
+    default:
+      break;
+  }
+
   const {
     register,
     handleSubmit,
@@ -75,6 +113,35 @@ function App() {
 
   const scrollToTop = () => {
     document.querySelector(".app").scrollTop = 0;
+  };
+
+  const scrollIntoView = (view, hide) => {
+    if (hide) {
+      setmMenu(false);
+    }
+    let element;
+    switch (view) {
+      case 1:
+        element = document.querySelector(".s_main");
+        break;
+      case 2:
+        element = document.querySelector(".s_offer");
+        break;
+      case 3:
+        element = document.querySelector(".s_about");
+        break;
+      case 4:
+        element = document.querySelector(".s_industries_partOne");
+        break;
+      case 5:
+        element = document.querySelector(".s_scouting");
+        break;
+
+      default:
+        element = document.querySelector(".s_process");
+        break;
+    }
+    element.scrollIntoView();
   };
 
   const validateNum = (event) => {
@@ -220,6 +287,19 @@ function App() {
             <h1 style={{ display: "none" }} className="orientation">
               Turn Your Device By 90 Degrees
             </h1>
+            <div
+              className="modal"
+              style={{
+                transform: mModal != 0 ? "translateY(0)" : "translateY(100%)",
+              }}
+            >
+              <div className="modal_con">
+                <Button onClick={() => setmModal(0)}>
+                  <CancelIcon />
+                </Button>
+                <div id="modal_content" className="modal_content"></div>
+              </div>
+            </div>
             {/* Contact us */}
             <div
               className={cFromState ? "contactUs expandContactUs" : "contactUs"}
@@ -368,25 +448,13 @@ function App() {
                 </Link>
 
                 <nav>
-                  <a href="/">Home</a>
-                  <a href="/">Services</a>
-                  <a href="/">About us</a>
-                  <a href="/">Industries</a>
-                  <a href="/">Careers</a>
+                  <div onClick={() => scrollIntoView(1)}>Home</div>
+                  <div onClick={() => scrollIntoView(2)}>Services</div>
+                  <div onClick={() => scrollIntoView(3)}>About us</div>
+                  <div onClick={() => scrollIntoView(4)}>Industries</div>
+                  <div onClick={() => scrollIntoView(5)}>Careers</div>
                 </nav>
-                <div
-                  className="menu"
-                  style={{
-                    position: mMenu ? "absolute" : "unset",
-                    top: mMenu ? "0" : "unset",
-                    right: mMenu ? "0" : "unset",
-                    width: mMenu ? "100vw" : "64px",
-                    height: mMenu ? "calc(100 * var(--vh))" : "59px",
-                    backdropFilter: mMenu ? "blur(50px)" : "unset",
-                    WebkitBackdropFilter: mMenu ? "blur(50px)" : "unset",
-                    boxShadow: mMenu ? " 0 0 10px 0 black" : "unset",
-                  }}
-                >
+                <div className={mMenu ? "menu expandedMenu" : "menu"}>
                   <Button
                     onClick={() => {
                       mMenu ? setmMenu(false) : setmMenu(true);
@@ -397,11 +465,19 @@ function App() {
                   {mMenu ? (
                     <>
                       <nav>
-                        <a href="/">Home</a>
-                        <a href="/">Services</a>
-                        <a href="/">About us</a>
-                        <a href="/">Industries</a>
-                        <a href="/">Careers</a>
+                        <div onClick={() => scrollIntoView(1, true)}>Home</div>
+                        <div onClick={() => scrollIntoView(2, true)}>
+                          Services
+                        </div>
+                        <div onClick={() => scrollIntoView(3, true)}>
+                          About us
+                        </div>
+                        <div onClick={() => scrollIntoView(4, true)}>
+                          Industries
+                        </div>
+                        <div onClick={() => scrollIntoView(5, true)}>
+                          Careers
+                        </div>
                       </nav>
                     </>
                   ) : (
@@ -435,8 +511,8 @@ function App() {
               <div>
                 <div className="offer_anim_card" id="0">
                   <img loading="lazy" src={card_asset_6} alt="card" />
-                  <div>
-                    <h1>Mobile App development</h1>
+                  <div id="cardContent_1">
+                    <h1 onClick={() => setmModal(1)}>Mobile App development</h1>
                     <ul>
                       <li>Highly proficient in Android app development.</li>
                       <li>
@@ -461,8 +537,8 @@ function App() {
                 </div>
                 <div className="offer_anim_card" id="1">
                   <img loading="lazy" src={card_asset_1} alt="card" />
-                  <div>
-                    <h1>Website development</h1>
+                  <div id="cardContent_2">
+                    <h1 onClick={() => setmModal(2)}>Website development</h1>
                     <ul>
                       <li> Highly proficient in website development.</li>
                       <li>
@@ -486,8 +562,8 @@ function App() {
                 <div className="offer_anim_card" id="2">
                   <img loading="lazy" src={card_asset_2} alt="card" />
 
-                  <div>
-                    <h1>Web design</h1>
+                  <div id="cardContent_3">
+                    <h1 onClick={() => setmModal(3)}>Web design</h1>
                     <ul>
                       <li>Highly proficient in web designing.</li>
                       <li>
@@ -507,8 +583,8 @@ function App() {
                 </div>
                 <div className="offer_anim_card" id="3">
                   <img loading="lazy" src={card_asset_3} alt="card" />
-                  <div>
-                    <h1>Mobile App design</h1>
+                  <div id="cardContent_4">
+                    <h1 onClick={() => setmModal(4)}>Mobile App design</h1>
                     <ul>
                       <li>Highly proficient in mobile app designing.</li>
                       <li>
@@ -529,8 +605,8 @@ function App() {
                 </div>
                 <div className="offer_anim_card" id="4">
                   <img loading="lazy" src={card_asset_5} alt="card" />
-                  <div>
-                    <h1>Graphic designing</h1>
+                  <div id="cardContent_5">
+                    <h1 onClick={() => setmModal(5)}>Graphic designing</h1>
                     <ul>
                       <li>Highly proficient in Graphic designing.</li>
                       <li>
@@ -548,8 +624,8 @@ function App() {
                 </div>
                 <div className="offer_anim_card" id="5">
                   <img loading="lazy" src={card_asset_4} alt="card" />
-                  <div>
-                    <h1> Content Writing</h1>
+                  <div id="cardContent_6">
+                    <h1 onClick={() => setmModal(6)}> Content Writing</h1>
                     <ul>
                       <li>Maintaining consistent quality of work.</li>
                       <li>
@@ -904,39 +980,39 @@ function App() {
                 <h1>CAPABILITES</h1>
                 <div>
                   <div>
-                    <img src={industriesTwo_asset_1} alt="" />
+                    <img loading="lazy" src={industriesTwo_asset_1} alt="" />
                     <p>
                       Trendy And Creative Designs For Better User Experience
                     </p>
                   </div>
                   <div>
-                    <img src={industriesTwo_asset_2} alt="" />
+                    <img loading="lazy" src={industriesTwo_asset_2} alt="" />
                     <p>Delivering Updated And Engaging Quality Content</p>
                   </div>
                   <div>
-                    <img src={industriesTwo_asset_3} alt="" />
+                    <img loading="lazy" src={industriesTwo_asset_3} alt="" />
                     <p>
                       Practicing Security And Safety Of The Product Before
                       Delivery
                     </p>
                   </div>
                   <div>
-                    <img src={industriesTwo_asset_4} alt="" />
+                    <img loading="lazy" src={industriesTwo_asset_4} alt="" />
                     <p>
                       Providing Intuitive Navigation While Accessing Our
                       Websites
                     </p>
                   </div>
                   <div>
-                    <img src={industriesTwo_asset_5} alt="" />
+                    <img loading="lazy" src={industriesTwo_asset_5} alt="" />
                     <p>24x7 Service Providence And Customer Support</p>
                   </div>
                   <div>
-                    <img src={industriesTwo_asset_6} alt="" />
+                    <img loading="lazy" src={industriesTwo_asset_6} alt="" />
                     <p>Satisfied Clients All Over The Globe.</p>
                   </div>
                   <div>
-                    <img src={industriesTwo_asset_7} alt="" />
+                    <img loading="lazy" src={industriesTwo_asset_7} alt="" />
                     <p>Considerate Of Client’s Feedbacks</p>
                   </div>
                 </div>
