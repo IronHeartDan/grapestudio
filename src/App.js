@@ -54,7 +54,7 @@ import Cards from "./Cards";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { collection, getFirestore, doc, onSnapshot } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -76,6 +76,8 @@ function App() {
     hosted: false,
     error: "",
     message: "",
+    positiveBtn: { url: "", message: "" },
+    negativeBtn: { url: "", message: "" },
   });
 
   // Initialize Firebase
@@ -312,7 +314,14 @@ function App() {
   // });
 
   if (!hosting.hosted) {
-    return <Cards error={hosting.error} message={hosting.message} />;
+    return (
+      <Cards
+        error={hosting.error}
+        message={hosting.message}
+        positiveBtn={hosting.positiveBtn}
+        negativeBtn={hosting.negativeBtn}
+      />
+    );
   }
 
   return (
