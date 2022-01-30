@@ -50,8 +50,44 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import TermsAndCondition from "./TermsAndCondition";
 import Disclaimer from "./Disclaimer";
 import PrivacyPolicy from "./PrivacyPolicy";
+import Cards from "./Cards";
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { collection, getFirestore, doc, onSnapshot } from "firebase/firestore";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDHq4bhxFD_bWvPHNBbNstF3t51kPkXFSE",
+  authDomain: "grapestudio-gpse.firebaseapp.com",
+  projectId: "grapestudio-gpse",
+  storageBucket: "grapestudio-gpse.appspot.com",
+  messagingSenderId: "669568635390",
+  appId: "1:669568635390:web:560871331408e177f970af",
+  measurementId: "G-97WCQVNTKJ",
+};
 
 function App() {
+  const [hosting, setHosting] = useState({
+    hosted: false,
+    error: "",
+    message: "",
+  });
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  useEffect(async () => {
+    onSnapshot(doc(db, "hosting", "data"), (doc) => {
+      setHosting(doc.data());
+    });
+  }, []);
+
   const [scrollTopState, setScrollTop] = useState(false);
   const [scoutState, setScoute] = useState(0);
   const [cFromState, setcFrom] = useState(false);
@@ -274,6 +310,10 @@ function App() {
   //   let oE = document.querySelector(".anim_offer");
   //   offerMagic.observe(oE);
   // });
+
+  if (!hosting.hosted) {
+    return <Cards error={hosting.error} message={hosting.message} />;
+  }
 
   return (
     <Router>
