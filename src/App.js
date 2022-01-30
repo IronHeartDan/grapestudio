@@ -56,12 +56,7 @@ import Cards from "./Cards";
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+const config = {
   apiKey: "AIzaSyDHq4bhxFD_bWvPHNBbNstF3t51kPkXFSE",
   authDomain: "grapestudio-gpse.firebaseapp.com",
   projectId: "grapestudio-gpse",
@@ -73,15 +68,10 @@ const firebaseConfig = {
 
 function App() {
   const [hosting, setHosting] = useState({
-    hosted: false,
-    error: "",
-    message: "",
-    positiveBtn: { url: "", message: "" },
-    negativeBtn: { url: "", message: "" },
+    hosted: true,
   });
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  const app = initializeApp(config);
   const db = getFirestore(app);
 
   useEffect(async () => {
