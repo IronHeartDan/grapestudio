@@ -39,11 +39,12 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import CancelIcon from "@material-ui/icons/Cancel";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useForm } from "react-hook-form";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 // Modules
 
@@ -74,11 +75,11 @@ function App() {
   const app = initializeApp(config);
   const db = getFirestore(app);
 
-  useEffect(async () => {
+  useEffect(() => {
     onSnapshot(doc(db, "hosting", "data"), (doc) => {
       setHosting(doc.data());
     });
-  }, []);
+  }, [db]);
 
   const [scrollTopState, setScrollTop] = useState(false);
   const [scoutState, setScoute] = useState(0);
@@ -86,35 +87,38 @@ function App() {
   const [mMenu, setmMenu] = useState(false);
   const [mModal, setmModal] = useState(0);
 
+  let modal_content = null;
+  let content = null;
+
   switch (mModal) {
     case 1:
-      var modal_content = document.getElementById("modal_content");
-      var content = document.getElementById("cardContent_1");
+      modal_content = document.getElementById("modal_content");
+      content = document.getElementById("cardContent_1");
       modal_content.innerHTML = content.innerHTML;
       break;
     case 2:
-      var modal_content = document.getElementById("modal_content");
-      var content = document.getElementById("cardContent_2");
+      modal_content = document.getElementById("modal_content");
+      content = document.getElementById("cardContent_2");
       modal_content.innerHTML = content.innerHTML;
       break;
     case 3:
-      var modal_content = document.getElementById("modal_content");
-      var content = document.getElementById("cardContent_3");
+      modal_content = document.getElementById("modal_content");
+      content = document.getElementById("cardContent_3");
       modal_content.innerHTML = content.innerHTML;
       break;
     case 4:
-      var modal_content = document.getElementById("modal_content");
-      var content = document.getElementById("cardContent_4");
+      modal_content = document.getElementById("modal_content");
+      content = document.getElementById("cardContent_4");
       modal_content.innerHTML = content.innerHTML;
       break;
     case 5:
-      var modal_content = document.getElementById("modal_content");
-      var content = document.getElementById("cardContent_5");
+      modal_content = document.getElementById("modal_content");
+      content = document.getElementById("cardContent_5");
       modal_content.innerHTML = content.innerHTML;
       break;
     case 6:
-      var modal_content = document.getElementById("modal_content");
-      var content = document.getElementById("cardContent_6");
+      modal_content = document.getElementById("modal_content");
+      content = document.getElementById("cardContent_6");
       modal_content.innerHTML = content.innerHTML;
       break;
 
@@ -125,11 +129,32 @@ function App() {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const cform = useRef();
+
+  const onSubmit = () => {
+    emailjs
+      .sendForm(
+        "service_mzrl6vf",
+        "template_b937e5c",
+        cform.current,
+        "user_oaMdLxUaKRTMXbmLYLPAV"
+      )
+      .then(
+        (result) => {
+          setcFrom(false);
+          reset();
+          console.log(result.text);
+        },
+        (error) => {
+          alert(error.text);
+          console.log(error.text);
+        }
+      );
+  };
 
   const onScroll = (e) => {
     if (e.target.scrollTop > 100) {
@@ -144,6 +169,7 @@ function App() {
   };
 
   const scrollIntoView = (view, hide) => {
+    console.log(`${view}, ${hide}`);
     if (hide) {
       setmMenu(false);
     }
@@ -170,35 +196,6 @@ function App() {
         break;
     }
     element.scrollIntoView();
-  };
-
-  const validateNum = (event) => {
-    alert(event.key !== "Unidentified");
-    alert(event.key !== undefined);
-    if (event.key !== "Unidentified" && event.key !== undefined) {
-      alert("Key : " + event.key);
-      if (
-        !event.key === "Backspace" ||
-        !event.key === "Enter" ||
-        !event.key.match(/[a-z|A-Z]/)
-      ) {
-        event.preventDefault();
-      }
-    } else if (
-      event.keyCode !== "Unidentified" &&
-      event.keyCode !== undefined
-    ) {
-      alert("KeyCode : " + event.keyCode);
-      if (
-        !event.keyCode === 8 ||
-        !event.keyCode === 32 ||
-        (!event.keyCode >= 65 && event.keyCode <= 122)
-      ) {
-        event.preventDefault();
-      }
-    } else {
-      alert("Doesn't Support Your Browser!");
-    }
   };
 
   useEffect(() => {
@@ -329,7 +326,7 @@ function App() {
             <div
               className="modal"
               style={{
-                transform: mModal != 0 ? "translateY(0)" : "translateY(100%)",
+                transform: mModal !== 0 ? "translateY(0)" : "translateY(100%)",
               }}
             >
               <div className="modal_con">
@@ -369,26 +366,38 @@ function App() {
                         alt="contactUs"
                         className="contactAsset"
                       />
-                      <img
-                        src={asset_whatsapp}
-                        alt="whatsapp"
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="http://wa.me/919512977129"
                         className="asset_whatsapp"
-                      />
-                      <img
-                        src={asset_facebook}
-                        alt="facebook"
+                      >
+                        <img src={asset_whatsapp} alt="whatsapp" />
+                      </a>
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.facebook.com/Grapestudioenterprise"
                         className="asset_facebook"
-                      />
-                      <img
-                        src={asset_linkedin}
-                        alt="linkedin"
+                      >
+                        <img src={asset_facebook} alt="facebook" />
+                      </a>
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.linkedin.com/in/grape-studio-enterprise-022104215/"
                         className="asset_linkedin"
-                      />
-                      <img
-                        src={asset_instagram}
-                        alt="instagram"
+                      >
+                        <img src={asset_linkedin} alt="linkedin" />
+                      </a>
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://www.instagram.com/grape_studio_enterprise"
                         className="asset_instagram"
-                      />
+                      >
+                        <img src={asset_instagram} alt="instagram" />
+                      </a>
                     </div>
                     <div>
                       <h1>Welcome To,</h1>
@@ -397,7 +406,11 @@ function App() {
                   </div>
                   <div>
                     <p>How Can We Help You?</p>
-                    <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+                    <form
+                      onSubmit={handleSubmit(onSubmit)}
+                      ref={cform}
+                      autoComplete="off"
+                    >
                       <input
                         type="text"
                         name="name"
@@ -530,9 +543,12 @@ function App() {
                 </div>
                 <div>
                   <img loading="lazy" src={slogan} alt="slogan" />
-                  <a href="/" className="main_btn">
+                  <div
+                    onClick={() => scrollIntoView(2, true)}
+                    className="main_btn"
+                  >
                     Get Started
-                  </a>
+                  </div>
                 </div>
               </div>
               {/* <img loading="lazy" src={Wave} alt="Wave" className="Wave" />
@@ -733,7 +749,12 @@ function App() {
                       </li>
                       <li>Follow the company guidelines and best practices.</li>
                     </ul>
-                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                    <h1>
+                      Send Your Resume to{" "}
+                      <a href="mailto:hr@grapestudioenterprise.in">
+                        hr@grapestudioenterprise.in
+                      </a>
+                    </h1>
                   </div>
                 </div>
                 <div style={{ height: scoutState === 2 ? "150px" : "0" }}>
@@ -791,7 +812,12 @@ function App() {
                         various browsers.
                       </li>
                     </ul>
-                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                    <h1>
+                      Send Your Resume to{" "}
+                      <a href="mailto:hr@grapestudioenterprise.in">
+                        hr@grapestudioenterprise.in
+                      </a>
+                    </h1>
                   </div>
                 </div>
                 <div style={{ height: scoutState === 3 ? "150px" : "0" }}>
@@ -835,7 +861,12 @@ function App() {
                       </li>
                       <li>Should be proficient in UI/UX design.</li>
                     </ul>
-                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                    <h1>
+                      Send Your Resume to{" "}
+                      <a href="mailto:hr@grapestudioenterprise.in">
+                        hr@grapestudioenterprise.in
+                      </a>
+                    </h1>
                   </div>
                 </div>
                 <div style={{ height: scoutState === 4 ? "150px" : "0" }}>
@@ -884,7 +915,12 @@ function App() {
                       </li>
                       <li>Follow the company guidelines and best practices.</li>
                     </ul>
-                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                    <h1>
+                      Send Your Resume to{" "}
+                      <a href="mailto:hr@grapestudioenterprise.in">
+                        hr@grapestudioenterprise.in
+                      </a>
+                    </h1>
                   </div>
                 </div>
                 <div style={{ height: scoutState === 5 ? "150px" : "0" }}>
@@ -926,7 +962,12 @@ function App() {
                         Should be adept focus on troubleshooting and debugging.
                       </li>
                     </ul>
-                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                    <h1>
+                      Send Your Resume to{" "}
+                      <a href="mailto:hr@grapestudioenterprise.in">
+                        hr@grapestudioenterprise.in
+                      </a>
+                    </h1>
                   </div>
                 </div>
                 <div style={{ height: scoutState === 6 ? "150px" : "0" }}>
@@ -980,7 +1021,12 @@ function App() {
                       </li>
                       <li>Follow the company guidelines and best practices.</li>
                     </ul>
-                    <h1>Send Your Resume to hr@grapestudioenterprise.in</h1>
+                    <h1>
+                      Send Your Resume to{" "}
+                      <a href="mailto:hr@grapestudioenterprise.in">
+                        hr@grapestudioenterprise.in
+                      </a>
+                    </h1>
                   </div>
                 </div>
               </div>

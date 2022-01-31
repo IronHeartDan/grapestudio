@@ -202,10 +202,12 @@ a {
 .expandContactUs > div:first-of-type > div {
   position: relative;
 }
-.expandContactUs > div:first-of-type > div > img {
+
+.expandContactUs > div:first-of-type > div > a  {
   position: absolute;
-  width: 50px;
-  height: 50px;
+}
+.expandContactUs > div:first-of-type > div > a > img {
+  width: 100%;
   animation: float 1s 0s infinite alternate-reverse ease-in-out;
   z-index: 0;
   user-select: none;
@@ -279,7 +281,7 @@ a {
   outline: none;
   color: white;
   margin: 5px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   background: linear-gradient(120deg, #272c6b, #5475b9, white);
 }
@@ -492,6 +494,7 @@ section {
 }
 
 .s_main > .main_con > div:last-of-type > .main_btn {
+  cursor: pointer;
   margin-top: 10%;
   padding: 15px 25px;
   background-color: white;
@@ -696,6 +699,12 @@ section {
 
 .s_scouting > div > div > .s_scoutingDetails > ul {
   padding-left: 50px;
+}
+
+.s_scouting > div > div > .s_scoutingDetails >  h1 > a{
+  font-weight: 100;
+  color: white;
+  text-decoration: none;
 }
 
 /* .s_offer */

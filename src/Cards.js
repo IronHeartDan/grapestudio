@@ -50,6 +50,7 @@ function Cards({ error, message, positiveBtn, negativeBtn }) {
           >
             <a
               target="_blank"
+              rel="noreferrer"
               href={positiveBtn.url}
               style={{
                 margin: "5px",
@@ -63,6 +64,7 @@ function Cards({ error, message, positiveBtn, negativeBtn }) {
             </a>
             <a
               target="_blank"
+              rel="noreferrer"
               href={negativeBtn.url}
               style={{
                 margin: "5px",
